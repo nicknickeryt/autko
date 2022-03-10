@@ -1,27 +1,41 @@
-body {
+@font-face {
+  font-family: TexGyreA;
+  src: url("res/font/texgyreadventor-regular.otf");
 }
 
 * {
-  box-sizing: border-box;
+  font-family: TexGyreA;
 }
-
-.logo {
-  height: 15vh;
-}
-
 .hider {
-    background: url('res/polonez.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    filter:blur(5px);
-    left: 0px;
-    right: 0px;
-    top: 0px;
+  background-image: url('res/polonez.jpg');
+  height: 100vh;
+  background-size: 300vh;
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  z-index: -1;
 }
 
-.top {
-  z-index: 1;
+.blur {
+  backdrop-filter: blur(10px);
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 0 15px #4f4f4f;
+}
+
+.autko {
+  display: none;
+  height: 12rem;
 }
