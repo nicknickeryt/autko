@@ -36,7 +36,17 @@
                   <?php
                     session_start();
                     if(isset($_SESSION["loggedin"])){
-                      echo '<a href="login/logout.php" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>' . $_SESSION["username"] . '</span></a>';
+                      echo '
+                      <div class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="profile">PROFIL</a>
+                                <a class="dropdown-item" href="login/logout.php">WYLOGUJ</a>
+                              </div>
+                      </div>
+                      <a href="login/logout.php" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>' . $_SESSION["username"] . '</span></a>';
                     }
                     else {
                       echo '<a href="login" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
