@@ -32,6 +32,17 @@
                     <a href="/onas" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
                   </div>
               </div>
+              <div class="navbar-nav navbar-right">
+                  <?php
+                    session_start();
+                    if(isset($_SESSION["loggedin"])){
+                      echo '<a href="login/logout.php" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>' . $_SESSION["username"] . '</span></a>';
+                    }
+                    else {
+                      echo '<a href="login" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
+                    }
+                  ?>
+                </div>
             </div>
     </nav>
 

@@ -1,4 +1,58 @@
 <!doctype html>
+<?php
+session_start();
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: welcome.php");
+    exit;
+  }
+
+    $user = "autko";
+    $pass = "autko";
+    $host = "localhost";
+    $dbdb = "autko";
+
+    // Create connection
+$conn = new mysqli($host, $user, $pass, $dbdb);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+  if(isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["username"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $email = $_POST["email"];
+    $news = 0;
+    if(isset($_POST["Test"])) {
+      $news = 1;
+    }
+
+$sql = "INSERT INTO credentials (username, mail, pass, news) VALUES ('" . $username . "' , '" . $email . "', '" . $password . "', " . $news . ")";
+echo $sql;
+$result = $conn->query($sql);
+$conn->close();
+
+
+} else if(isset($_POST["loginpassword"]) && isset($_POST["loginemail"])) {
+  $password = $_POST["loginpassword"];
+  $email = $_POST["loginemail"];
+  $sql = "SELECT * FROM credentials WHERE mail='" . $email . "' AND pass='" . $password . "'";
+  $result = $conn->query($sql);
+  if ($row = mysqli_fetch_array($result)) {
+    echo "aa";
+      echo "sukces!";
+      $_SESSION["loggedin"] = true;
+      $_SESSION["email"] = $email;
+      $_SESSION["username"] = $row["username"];
+      header("location: ../index.php");
+  }
+  else {
+    echo "zle haslo lub mail";
+  }
+  $conn->close();
+}
+?>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -19,40 +73,6 @@
   <script src="login.js">
   </script>
 
-  <script>
-    function register() {
-      var pass = $("#exampleInputPassword1").val();
-      var mail = $("#exampleInputEmail1").val();
-      var newsletter = $("#exampleCheck1").val();
-      alert("mail: " + mail + " haslo: " + pass + " news: " + newsletter);
-<?php
-      error_reporting(E_WARNING);
-      error_reporting(E_ALL);
-
-      echo $_POST['email'];
-
-    $user = "autko";
-    $pass = "autko";
-    $host = "localhost";
-    $dbdb = "autko";
-
-    // Create connection
-$conn = new mysqli($host, $user, $pass, $dbdb);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "INSERT INTO credentials (mail, pass, news) VALUES (test, pass, 1)";
-$result = $conn->query($sql);
-echo $result;
-
-$conn->close();
-?>
-    }
-  </script>
-
-
 
 <div class="text-center bg-image hider">
   <div class="blur">
@@ -70,17 +90,21 @@ $conn->close();
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <br>
-      <form action="index.php" method="post" onsubmit="register()">
+      <form action="index.php" method="post">
+        <div class="mb-3" >
+          <label for="exampleInputUsername1" class="form-label checkbox-left">Nazwa wyświetlana</label>
+          <input name="username" type="username" class="username form-control" id="exampleInputUsername1" aria-describedby="usernameHelp">
+        </div>
         <div class="mb-3" >
           <label for="exampleInputEmail1" class="form-label checkbox-left">Adres e-mail</label>
           <input name="email" type="email" class="email form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label checkbox-left">Hasło</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input name="password" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <input type="checkbox" name="Test" class="form-check-input" id="checkbox">
           <label class="form-check-label checkbox-left" for="exampleCheck1">Otrzymuj wiadomości od administracji</label>
         </div>
         <button type="submit" class="btn btn-primary">Zarejestruj się</button>
@@ -90,14 +114,14 @@ $conn->close();
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <br>
-      <form onsubmit="login()">
+      <form action="index.php" method="post">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label checkbox-left">Adres e-mail</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input name="loginemail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label checkbox-left">Hasło</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input name="loginpassword" type="password" class="form-control" id="exampleInputPassword1">
         </div>
         <button class="btn btn-primary">Zaloguj się</button>
       </form>
