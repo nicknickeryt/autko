@@ -31,6 +31,7 @@
                     <a href="/ogloszenia" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
                     <a href="/onas" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
                   </div>
+
               </div>
               <div class="navbar-nav navbar-right">
                   <?php
@@ -38,15 +39,14 @@
                     if(isset($_SESSION["loggedin"])){
                       echo '
                       <div class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                ' . $_SESSION["username"] . '
                               </a>
-                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="profile">PROFIL</a>
-                                <a class="dropdown-item" href="login/logout.php">WYLOGUJ</a>
-                              </div>
-                      </div>
-                      <a href="login/logout.php" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>' . $_SESSION["username"] . '</span></a>';
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="profile">Profil</a></li>
+                                <li><a class="dropdown-item" href="login/logout.php">Wyloguj się</a></li>
+                              </ul>
+                      </div>';
                     }
                     else {
                       echo '<a href="login" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
