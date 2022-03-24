@@ -84,13 +84,15 @@
           <center>
 
             <div class="card profile" style="width: 65vw;">
-              <div class="card-body flex align-self-center container1">
+              <div class="card-body flex align-self-center">
+                <div class="flex align-self-center container1">
                 <img src="../res/profpic/<?php echo $userid; ?>.png" class="card-img-top userimage align-self-center" alt="...">
                 <div class="overlay">
                   <a href="#" class="icon" >
                     <i class="fa fa-cloud-arrow-up"></i>
                   </a>
                 </div>
+              </div>
                 <div class="card-body align-self-center">
                 <h5 class="card-title"><?php echo $username; ?></h5>
                 <p class="card-text"><?php echo $email; ?></p>
@@ -119,7 +121,7 @@
             <div class="modal-body">
                 <p class="body-desc">
                     It will be easier for your friends to recognize you if you upload your real photo. You can upload the image in JPG, GIF or PNG format. </p>
-                <div class="photo-input"> <input type="file" id="loadFile" onchange="console.log(this.files[0].name);" /> <button class="btn btn-sm btn-primary" onclick="document.getElementById('loadFile').click()"> Select a file </button> </div>
+                <div class="photo-input"> <input type="file" id="loadFile" onchange="console.log(this.files[0].name);" /> <button id="lf" class="btn btn-sm btn-primary" onclick="document.getElementById('lf').click()"> Select a file </button> </div>
             </div>
             <div class="modal-footer">
                 <p class="footer-title">
