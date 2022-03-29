@@ -1,12 +1,10 @@
 <?php
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  echo "test";
     if (isset($_FILES['files'])) {
-      echo "jest";
         $errors = [];
         $path = '../res/profpic/';
-	$extensions = ['jpg', 'jpeg', 'png', 'gif'];
+	$extensions = ['png'];
 
         $all_files = count($_FILES['files']['tmp_name']);
 
@@ -18,18 +16,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$tmp = explode('.', $_FILES['files']['name'][$i]);
 		$file_ext = strtolower(end($tmp));
 
-		$file = $path . $file_name;
+		$file = $path . $_SESSION["id"] . "."  . $file_ext;
 
 		if (!in_array($file_ext, $extensions)) {
-			$errors[] = 'Extension not allowed: ' . $file_name . ' ' . $file_type;
+			$errors[] = 'Niedozwolone rozszerzenie ' . $file_name . ' ' . $file_type;
+      http_response_code(415);
 		}
 
 		if ($file_size > 2097152) {
-			$errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
+			$errors[] = 'Plik jest zbyt duży' . $file_name . ' ' . $file_type;
+      http_response_code(413);
 		}
 
 		if (empty($errors)) {
 			move_uploaded_file($file_tmp, $file);
+      header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+      header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+      echo "success";
+
 		}
 	}
 

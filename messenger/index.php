@@ -99,10 +99,11 @@
               </div>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"></li>
+                <li class="list-group-item">An item</li>
               </ul>
               <div class="card-body">
-                <a href="#" class="card-link btn btn-primary descchange">Zmień opis</a>
+                <a href="#" class="card-link btn btn-primary">Wyślij wiadomość</a>
+                <a href="#" class="card-link btn btn-primary">Zgłoś</a>
               </div>
             </div>
           </div>
@@ -118,7 +119,7 @@
             <div class="modal-body">
                 <p class="body-desc">
                     Zdjęcie powinno mieć wielkość minimum 70px x 70px.</p>
-                <div class="photo-input"> <input type="file" id="loadFile" onchange="$('#lf').removeClass('disabled');" /> <button id="lf" class="btn btn-sm btn-primary disabled"> Zapisz </button> </div>
+                <div class="photo-input"> <input type="file" id="loadFile" onchange="$('#lf').removeClass('disabled');" /> <button id="lf" class="btn btn-sm btn-primary disabled"> Select a file </button> </div>
             </div>
             <div class="modal-footer">
               <div class="footer-title">
@@ -128,27 +129,6 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="descModal" tabindex="-1" aria-labelledby="descModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="descModalLabel">
-            Zmiana opisu</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-        <p class="body-desc">
-          <input class="desc-inp" type="text" ></input>
-                  <button id="submitd" class="btn btn-sm btn-primary" onClick="location.href='../upload.php?desc=true&desc='"$('.desc-inp').val();"'"> Zapisz </button>
-    <div class="modal-footer">
-      <div class="footer-title">
-        <p>Maks. 256 słów</p>
-      </div>
-    </div>
-</div>
-</div>
-</div>
-
 <script>
 $.ajax({
   url: "../res/profpic/<?php echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png'); ?>"  ,

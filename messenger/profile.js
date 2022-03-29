@@ -2,9 +2,7 @@ window.onload = function() {
   $(".icon").click(function()  {
     $("#exampleModal").modal("toggle");
   });
-  $(".descchange").click(function()  {
-    $("#descModal").modal("toggle");
-  });
+
 $("#lf").click(function()  {
   uploadFile();
 });

@@ -44,6 +44,7 @@ $conn->close();
       $_SESSION["loggedin"] = true;
       $_SESSION["email"] = $email;
       $_SESSION["username"] = $row["username"];
+      $_SESSION["id"] = $row["ID"];
       header("location: ../index.php");
   }
   else {
