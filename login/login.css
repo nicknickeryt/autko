@@ -6,6 +6,7 @@
 * {
   font-family: TexGyreA;
 }
+
 .hider {
   background-image: url('../res/polonez.jpg');
   height: 100vh;
@@ -54,6 +55,34 @@
   transform: translateY(20vh);
 }
 
-.checkbox-left  {
+.checkbox-left {
   float: left;
+}
+
+.error {
+  margin: 10px;
+  padding: 20px;
+  background-color: red;
+  color: #fff;
+  width: 20%;
+  border-radius: 5px;
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.success {
+  margin: 10px;
+  padding: 20px;
+  background-color: green;
+  color: #fff;
+  width: 20%;
+  border-radius: 5px;
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }

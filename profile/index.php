@@ -73,6 +73,11 @@
                     $email = $row['mail'];
                     $userid = $row['ID'];
                   }
+                  $sql = "SELECT * FROM profiles WHERE ID='" . $_SESSION['id'] . "'";
+                  $result = $conn->query($sql);
+                  if ($row = mysqli_fetch_array($result)) {
+                    $opis = $row['opis'];
+                  }
 
 
                     ?>
@@ -99,7 +104,7 @@
               </div>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item"></li>
+                <li class="list-group-item"><?php echo $opis; ?></li>
               </ul>
               <div class="card-body">
                 <a href="#" class="card-link btn btn-primary descchange">Zmień opis</a>
@@ -139,7 +144,7 @@
     <div class="modal-body">
         <p class="body-desc">
           <input class="desc-inp" type="text" ></input>
-                  <button id="submitd" class="btn btn-sm btn-primary" onClick="location.href='../upload.php?desc=true&desc='"$('.desc-inp').val();"'"> Zapisz </button>
+                  <button id="submitd" class="btn btn-sm btn-primary"</script> Zapisz </button>
     <div class="modal-footer">
       <div class="footer-title">
         <p>Maks. 256 słów</p>

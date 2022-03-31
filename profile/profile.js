@@ -5,6 +5,9 @@ window.onload = function() {
   $(".descchange").click(function()  {
     $("#descModal").modal("toggle");
   });
+  $("#submitd").click(function () {
+    window.location.href = "upload.php?desc=" + $('.desc-inp').val();
+  });
 $("#lf").click(function()  {
   uploadFile();
 });

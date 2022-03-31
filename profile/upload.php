@@ -41,3 +41,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo $errors;
     }
 }
+
+else if (isset($_GET["desc"])){
+  $user = "autko";
+  $pass = "autko";
+  $host = "localhost";
+  $dbdb = "autko";
+
+  // Create connection
+$conn = new mysqli($host, $user, $pass, $dbdb);
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+$sql = "UPDATE profiles SET opis = '" . $_GET['desc'] . "' WHERE ID = " . $_SESSION['id'] . "";
+if (isset($_SERVER["HTTP_REFERER"])) {
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
+    }
+$conn->query($sql);
+}

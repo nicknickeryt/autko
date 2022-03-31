@@ -17,7 +17,7 @@ $conn = new mysqli($host, $user, $pass, $dbdb);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
+if(isset($_POST["register"])){
   if(isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["username"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -27,30 +27,64 @@ if ($conn->connect_error) {
       $news = 1;
     }
 
-$sql = "INSERT INTO credentials (username, mail, pass, news) VALUES ('" . $username . "' , '" . $email . "', '" . $password . "', " . $news . ")";
-echo $sql;
-$result = $conn->query($sql);
-$conn->close();
+  $sel1 = "SELECT ID FROM credentials WHERE mail='" . $email . "'";
+  $resl1 = $conn->query($sel1);
+  if(mysqli_num_rows($resl1) != 0) {
+    echo "<center>
+    <div class='container error'>
+    <a>Ten email jest już zarejstrowany.</a>
+    </div>
+    <center>
 
+    ";
+  }
+  $sql = "INSERT INTO credentials (username, mail, pass, news) VALUES ('" . $username . "' , '" . $email . "', '" . $password . "', " . $news . ")";
+  $conn->query($sql);
 
-} else if(isset($_POST["loginpassword"]) && isset($_POST["loginemail"])) {
-  $password = $_POST["loginpassword"];
-  $email = $_POST["loginemail"];
-  $sql = "SELECT * FROM credentials WHERE mail='" . $email . "' AND pass='" . $password . "'";
-  $result = $conn->query($sql);
-  if ($row = mysqli_fetch_array($result)) {
-    echo "aa";
-      echo "sukces!";
-      $_SESSION["loggedin"] = true;
-      $_SESSION["email"] = $email;
-      $_SESSION["username"] = $row["username"];
-      $_SESSION["id"] = $row["ID"];
-      header("location: ../index.php");
+  $selid = "SELECT ID FROM credentials WHERE mail='" . $email . "' AND pass='" . $password . "'";
+  $resid = $conn->query($selid);
+  if($row = mysqli_fetch_array($resid)) {
+    $id = $row['ID'];
+    $sql1 = "INSERT INTO profiles (ID, opis) VALUES (" . $id . ", ' ')";
+    $conn->query($sql1);
+    $conn->close();
   }
-  else {
-    echo "zle haslo lub mail";
   }
-  $conn->close();
+  echo "<center>
+  <div class='container success'>
+  <a>Zarejestrowano!</a>
+  </div>
+  <center>
+
+  ";
+    unset($_POST["register"]);
+}
+else if (isset($_POST["login"])) {
+    if(isset($_POST["loginpassword"]) && isset($_POST["loginemail"])) {
+    $password = $_POST["loginpassword"];
+    $email = $_POST["loginemail"];
+    $sql = "SELECT * FROM credentials WHERE mail='" . $email . "' AND pass='" . $password . "'";
+    $result = $conn->query($sql);
+    if ($row = mysqli_fetch_array($result)) {
+      echo "aa";
+        echo "sukces!";
+        $_SESSION["loggedin"] = true;
+        $_SESSION["email"] = $email;
+        $_SESSION["username"] = $row["username"];
+        $_SESSION["id"] = $row["ID"];
+        header("location: ../index.php");
+    }
+    else {
+      echo "<center>
+      <div class='container error'>
+      <a>Zły login lub hasło.</a>
+      </div>
+      <center>
+
+      ";
+    }
+    $conn->close();
+  }
 }
 ?>
 
@@ -108,7 +142,7 @@ $conn->close();
           <input type="checkbox" name="Test" class="form-check-input" id="checkbox">
           <label class="form-check-label checkbox-left" for="exampleCheck1">Otrzymuj wiadomości od administracji</label>
         </div>
-        <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+        <button type="submit" class="btn btn-primary" name="register">Zarejestruj się</button>
       </form>
 
 
@@ -124,7 +158,7 @@ $conn->close();
           <label for="exampleInputPassword1" class="form-label checkbox-left">Hasło</label>
           <input name="loginpassword" type="password" class="form-control" id="exampleInputPassword1">
         </div>
-        <button class="btn btn-primary">Zaloguj się</button>
+        <button class="btn btn-primary" type="submit" name="login">Zaloguj się</button>
       </form>
     </div>
   </div>
