@@ -75,69 +75,104 @@
                   }
 
 
+
                     ?>
                   </div>
               </div>
       </nav>
-      <div class="text-center bg-image hider">
-        <div class="blur">
-          <center>
 
-            <div class="card profile" style="width: 65vw;">
-              <div class="card-body flex align-self-center">
-                <div class="flex align-self-center container1">
-                <img src="../res/profpic/default.svg" class="card-img-top userimage align-self-center" alt="">
-                <div class="overlay">
-                  <a href="#" class="icon" >
-                    <i class="fa fa-cloud-arrow-up"></i>
-                  </a>
-                </div>
-              </div>
-                <div class="card-body align-self-center">
-                <h5 class="card-title"><?php echo $username; ?></h5>
-                <p class="card-text"><?php echo $email; ?></p>
-              </div>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="card-link btn btn-primary">Wyślij wiadomość</a>
-                <a href="#" class="card-link btn btn-primary">Zgłoś</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="input-group">
+        <div id="myDropdown">
+          <input type="search" id="myInput" autocomplete="off" class="form-control" placeholder="Szukaj" onkeyup="filterFunction()"/>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                    Zmiana zdjęcia profilowego</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p class="body-desc">
-                    Zdjęcie powinno mieć wielkość minimum 70px x 70px.</p>
-                <div class="photo-input"> <input type="file" id="loadFile" onchange="$('#lf').removeClass('disabled');" /> <button id="lf" class="btn btn-sm btn-primary disabled"> Select a file </button> </div>
-            </div>
-            <div class="modal-footer">
-              <div class="footer-title">
-                <p>Wymagany format: PNG.</p>
-              </div>
-            </div>
-        </div>
-    </div>
+    <div class="row-fluid">
+
+
+
+<?php
+$sql = "SELECT * FROM credentials WHERE username!='" . $_SESSION['username'] . "'";
+$result = $conn->query($sql);
+while ($row = mysqli_fetch_array($result)) {
+  echo "<a class='user list-group-item' style='display: none;'>" . $row["username"] . "</a>";
+}
+ ?>
+
+   </div>
+ </div>
+
+<?php
+if(isset($_GET["userid"])){
+  $otherid = $_GET["userid"];
+  $othersql = "SELECT * FROM credentials WHERE id='" . $otherid . "'";
+  $result = $conn->query($othersql);
+  if ($row = mysqli_fetch_array($result)) {
+    $otherusername = $row['username'];
+    $otheremail = $row['mail'];
+  }
+  echo '                <img src="../res/profpic/default.svg" class="card-img-top userimage align-self-center" alt="">';
+  echo $otherusername;
+}
+ ?>
+
+<div class="container send-form">
+<input class="send"></input>
+<button class="sendbtn btn btn-primary" onclick="sendMess();">Wyślij</button>
 </div>
+
 <script>
+
+$(document).click(function() {
+    console.log('clicked outside');
+    $(".user").hide();
+});
+
+$("#myInput").click(function(event) {
+    console.log('clicked inside');
+    $(".user").show();
+    filterFunction();
+    event.stopPropagation();
+});
+
+$(".user").click(function() {
+  console.log($(this).text());
+});
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      $(a[i]).show();
+    } else {
+      $(a[i]).hide();
+    }
+  }
+}
+
 $.ajax({
   url: "../res/profpic/<?php echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png'); ?>"  ,
   type:'HEAD',
   success: function()
   {
-      $(".userimage").attr("src", "../res/profpic/<?php echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png'); ?>");
+      $(".userimage").attr("src", "../res/profpic/<?php echo $otherid . '.png?' . filemtime('../res/profpic/' . $otherid . '.png'); ?>");
   }
 });
+
+function sendMess() {
+  console.log("aaaa");
+  $.ajax({
+    url: "../profile/upload.php?message=" + $(".send").val() + "&senderid=" + <?php $otherid ?> + "&receiverid=" + <?php $userid ?>,
+    type:'HEAD',
+    success: function()
+    {
+        console.log("sukces");
+    }
+  });
+}
 
 </script>
 

@@ -1,5 +1,15 @@
 <?php
 session_start();
+$user = "autko";
+$pass = "autko";
+$host = "localhost";
+$dbdb = "autko";
+
+$conn = new mysqli($host, $user, $pass, $dbdb);
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['files'])) {
         $errors = [];
@@ -43,20 +53,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 else if (isset($_GET["desc"])){
-  $user = "autko";
-  $pass = "autko";
-  $host = "localhost";
-  $dbdb = "autko";
 
   // Create connection
-$conn = new mysqli($host, $user, $pass, $dbdb);
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
 }
 $sql = "UPDATE profiles SET opis = '" . $_GET['desc'] . "' WHERE ID = " . $_SESSION['id'] . "";
 if (isset($_SERVER["HTTP_REFERER"])) {
         header("Location: " . $_SERVER["HTTP_REFERER"]);
     }
 $conn->query($sql);
+}
+
+else if (isset($_GET["message"]) && isset($_GET["senderid"]) && isset($_GET["receiverid"])) {
+$sql = "INSERT INTO messenger (senderid, receiverid, content, date) VALUES (" . $_GET['senderid'] . "," . $_GET['receiverid'] . ",'" . $_GET['message'] . "'," . time() . ")";
+echo $sql;
+$conn->query($sql);
+
 }

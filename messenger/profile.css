@@ -111,3 +111,30 @@
 .dropdown-menu {
     right: 0;
 }
+
+.input-group {
+    align-self: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.row-fluid {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  cursor: pointer;
+}
+
+.send-form {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.send {
+  bottom: 0;
+  width: 90%;
+}

@@ -1,4 +1,26 @@
 <!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel=stylesheet href="login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+<script src="login.js">
+</script>
+
 <?php
 session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -19,9 +41,9 @@ if ($conn->connect_error) {
 }
 if(isset($_POST["register"])){
   if(isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["username"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $email = $_POST["email"];
+    $username = $_POST["regusername"];
+    $password = $_POST["regpassword"];
+    $email = $_POST["regemail"];
     $news = 0;
     if(isset($_POST["Test"])) {
       $news = 1;
@@ -48,15 +70,15 @@ if(isset($_POST["register"])){
     $sql1 = "INSERT INTO profiles (ID, opis) VALUES (" . $id . ", ' ')";
     $conn->query($sql1);
     $conn->close();
-  }
-  }
-  echo "<center>
-  <div class='container success'>
-  <a>Zarejestrowano!</a>
-  </div>
-  <center>
+    echo "<center>
+    <div class='container success'>
+    <a>Zarejestrowano!</a>
+    </div>
+    <center>
 
-  ";
+    ";
+  }
+  }
     unset($_POST["register"]);
 }
 else if (isset($_POST["login"])) {
@@ -80,7 +102,9 @@ else if (isset($_POST["login"])) {
       <a>Zły login lub hasło.</a>
       </div>
       <center>
-
+      <script>
+      $('#profile-tab').click();
+      </script>
       ";
     }
     $conn->close();
@@ -88,25 +112,6 @@ else if (isset($_POST["login"])) {
 }
 ?>
 
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel=stylesheet href="login.css">
-</head>
-
-<body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-  <script src="login.js">
-  </script>
 
 
 <div class="text-center bg-image hider">
@@ -125,24 +130,25 @@ else if (isset($_POST["login"])) {
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <br>
-      <form action="index.php" method="post">
+      <form action="index.php" method="post" autocomplete="off">
         <div class="mb-3" >
           <label for="exampleInputUsername1" class="form-label checkbox-left">Nazwa wyświetlana</label>
-          <input name="username" type="username" class="username form-control" id="exampleInputUsername1" aria-describedby="usernameHelp">
+          <input autocomplete="new-username" name="regusername" type="username" class="username form-control" id="exampleInputUsername1" aria-describedby="usernameHelp">
         </div>
         <div class="mb-3" >
           <label for="exampleInputEmail1" class="form-label checkbox-left">Adres e-mail</label>
-          <input name="email" type="email" class="email form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input autocomplete="off" name="regemail" type="email" class="email form-control" id="exampleInputEmail" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label checkbox-left">Hasło</label>
-          <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+          <input autocomplete="new-password" name="regpassword" type="password" class="form-control" id="exampleInputPassword">
         </div>
         <div class="mb-3 form-check">
           <input type="checkbox" name="Test" class="form-check-input" id="checkbox">
           <label class="form-check-label checkbox-left" for="exampleCheck1">Otrzymuj wiadomości od administracji</label>
         </div>
-        <button type="submit" class="btn btn-primary" name="register">Zarejestruj się</button>
+        <a class="btn btn-danger" role="button" href="../"><i class="fa-solid fa-circle-xmark"></i></a>
+        <button type="button" class="btn btn-primary" name="register">Zarejestruj się</button>
       </form>
 
 
@@ -158,6 +164,7 @@ else if (isset($_POST["login"])) {
           <label for="exampleInputPassword1" class="form-label checkbox-left">Hasło</label>
           <input name="loginpassword" type="password" class="form-control" id="exampleInputPassword1">
         </div>
+        <a class="btn btn-danger" role="button" href="../"><i class="fa-solid fa-circle-xmark"></i></a>
         <button class="btn btn-primary" type="submit" name="login">Zaloguj się</button>
       </form>
     </div>
