@@ -83,22 +83,11 @@
 
       <div class="input-group">
         <div id="myDropdown">
+          <div class="d-flex justify-content-between">
           <input type="search" id="myInput" autocomplete="off" class="form-control" placeholder="Szukaj" onkeyup="filterFunction()"/>
 
-    <div class="row-fluid">
-
-
-
-<?php
-$sql = "SELECT * FROM credentials WHERE username!='" . $_SESSION['username'] . "'";
-$result = $conn->query($sql);
-while ($row = mysqli_fetch_array($result)) {
-  echo "<a class='user list-group-item' style='display: none;'>" . $row["username"] . "</a>";
-}
- ?>
-
-   </div>
- </div>
+<div class="container align-self-center">
+  <div class="card receiver d-flex flex-row justify-content-center align-items-center">
 
 <?php
 if(isset($_GET["userid"])){
@@ -109,15 +98,58 @@ if(isset($_GET["userid"])){
     $otherusername = $row['username'];
     $otheremail = $row['mail'];
   }
-  echo '                <img src="../res/profpic/default.svg" class="card-img-top userimage align-self-center" alt="">';
-  echo $otherusername;
-}
- ?>
+  echo '<img src="../res/profpic/default.svg" class="card-img-top userimage align-self-center" alt="">
+    <div class="card-body">';
+  echo '<h5 class="card-title align-self-center">' . $otherusername . '</h5>
 
-<div class="container send-form">
-<input class="send"></input>
-<button class="sendbtn btn btn-primary" onclick="sendMess();">Wyślij</button>
+  </div>
+  </div>
+   </div>';
+}
+?>
+
+<div class="row-fluid">
+
+
+
+<?php
+$sql = "SELECT * FROM credentials WHERE username!='" . $_SESSION['username'] . "'";
+$result = $conn->query($sql);
+while ($row = mysqli_fetch_array($result)) {
+echo "<a class='user list-group-item' style='display: none;' onclick='window.location.href=\"../messenger/?userid=" . $row["ID"] . "\"'>" . $row["username"] . "</a>";
+}
+?>
 </div>
+
+</div>
+</div>
+</div>
+<div class="container flex-column d-flex">
+
+<?php
+$sql = "SELECT * FROM messenger WHERE senderid=" . $userid . " AND receiverid=" . $otherid . " OR senderid=" . $otherid . " AND receiverid=" . $userid . "";
+$result = $conn->query($sql);
+while ($row = mysqli_fetch_array($result)) {
+  if($row["senderid"] == $userid){
+    echo "<p class='message message-to text-decoration-none float-right'>" . $row["content"] . "</p>";
+  } else {
+    echo "<p class='message bg-primary message-from text-decoration-none float-left'>" . $row ["content"] . "</p>";
+  }
+}
+
+
+?>
+</div>
+
+
+</div>
+</div>
+</div>
+
+ <div class="navbar fixed-bottom input-group mb-3 send-form">
+   <input type="text" class="send form-control" placeholder="Wpisz wiadomość..." aria-label="Recipient's username" aria-describedby="button-addon2">
+   <button class="sendbtn btn btn-outline-secondary" onclick="sendMess();" type="button" id="button-addon2">Wyślij</button>
+ </div>
 
 <script>
 
@@ -153,19 +185,12 @@ function filterFunction() {
   }
 }
 
-$.ajax({
-  url: "../res/profpic/<?php echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png'); ?>"  ,
-  type:'HEAD',
-  success: function()
-  {
-      $(".userimage").attr("src", "../res/profpic/<?php echo $otherid . '.png?' . filemtime('../res/profpic/' . $otherid . '.png'); ?>");
-  }
-});
+
 
 function sendMess() {
   console.log("aaaa");
   $.ajax({
-    url: "../profile/upload.php?message=" + $(".send").val() + "&senderid=" + <?php $otherid ?> + "&receiverid=" + <?php $userid ?>,
+    url: "../profile/upload.php?message=" + $(".send").val() + "&senderid=" + <?php echo $userid ?> + "&receiverid=" + <?php echo $otherid ?>,
     type:'HEAD',
     success: function()
     {
@@ -173,6 +198,27 @@ function sendMess() {
     }
   });
 }
+
+$.ajax({
+  url: "../res/profpic/<?php
+  if(file_exists("../res/profpic/" . $userid . '.png'  )) {
+    echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png');
+  } else {
+    echo "default.svg";
+  }?>",
+  type:'HEAD',
+  success: function()
+  {
+        $(".userimage").attr("src", "../res/profpic/" + "<?php
+        if(file_exists("../res/profpic/" . $otherid . '.png'  )) {
+          echo $otherid . '.png?' . filemtime('../res/profpic/' . $otherid . '.png');
+        } else {
+          echo "default.svg";
+        }
+         ?>");
+
+  }
+});
 
 </script>
 
