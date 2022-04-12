@@ -144,8 +144,10 @@
 }
 
 .row-fluid {
+  display: none;
   margin: 10px;
   margin-top: 9vh;
+  padding: 0;
   transition: 2s;
   width: 20vw;
   position: absolute;
@@ -174,10 +176,49 @@
 }
 
 .message-from {
-  background: white;
-  color: white;
-  margin-left: auto;
+color: white;
 }
 .message-to {
-color: black;
+  background: white;
+  color: black;
+  margin-left: auto;
 }
+
+.message-box {
+  bottom: 0;
+height: 100%;
+overflow-y: auto;
+overflow-x: auto;
+max-height: 65vh;
+}
+
+.userimage-list {
+  width: 2vw;
+  height: 2vw;
+  display: flex;
+  border-radius: 5px;
+}
+
+.userlist {
+  display: flex;
+  cursor: pointer;
+}
+
+.userlist:hover {
+  background: var(--bs-blue);
+  color: #fff;
+}
+
+.userlist:hover .user-a {
+  color: #fff;
+}
+
+.user-a {
+  background: transparent;
+
+}
+
+.user-a:hover {
+}
+
+html,body { height:100%; }

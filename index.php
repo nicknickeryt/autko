@@ -42,7 +42,7 @@
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 ' . $_SESSION["username"] . '
                               </a>
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="profile">Profil</a></li>
                                 <li><a class="dropdown-item" href="login/logout.php">Wyloguj</a></li>
                               </ul>

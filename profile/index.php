@@ -43,7 +43,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                   ' . $_SESSION["username"] . '
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                   <li><a class="dropdown-item" href="#">Profil</a></li>
                                   <li><a class="dropdown-item" href="../login/logout.php">Wyloguj</a></li>
                                 </ul>
@@ -156,11 +156,18 @@
 
 <script>
 $.ajax({
-  url: "../res/profpic/<?php echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png'); ?>"  ,
+  url: "../res/profpic/<?php
+  $userimg = "default.svg";
+  if(file_exists("../res/profpic/" . $userid . '.png'  )) {
+    echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png');
+    $userimg = $userid + ".png";
+  } else {
+    echo $userimg;
+  }?>",
   type:'HEAD',
   success: function()
   {
-      $(".userimage").attr("src", "../res/profpic/<?php echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png'); ?>");
+      $(".userimage").attr("src", "../res/profpic/<?php echo $userimg . "?". filemtime('../res/profpic/' . $userimg); ?>");
   }
 });
 

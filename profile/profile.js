@@ -6,7 +6,14 @@ window.onload = function() {
     $("#descModal").modal("toggle");
   });
   $("#submitd").click(function () {
-    window.location.href = "upload.php?desc=" + $('.desc-inp').val();
+    $.ajax({
+      url: "upload.php?desc=" + $('.desc-inp').val(),
+      type:'HEAD',
+      success: function()
+      {
+          console.log("sukces");
+      }
+    });
   });
 $("#lf").click(function()  {
   uploadFile();

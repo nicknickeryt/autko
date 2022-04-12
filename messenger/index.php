@@ -8,7 +8,9 @@
       <!-- Bootstrap CSS -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
       <link rel=stylesheet href="profile.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css" integrity="sha512-qzgHTQ60z8RJitD5a28/c47in6WlHGuyRvMusdnuWWBB6fZ0DWG/KyfchGSBlLVeqAz+1LzNq+gGZkCSHnSd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
   <body>
@@ -43,7 +45,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                   ' . $_SESSION["username"] . '
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                   <li><a class="dropdown-item" href="#">Profil</a></li>
                                   <li><a class="dropdown-item" href="../login/logout.php">Wyloguj</a></li>
                                 </ul>
@@ -108,7 +110,8 @@ if(isset($_GET["userid"])){
 }
 ?>
 
-<div class="row-fluid">
+
+<ul class='row-fluid container list-group'>
 
 
 
@@ -116,24 +119,34 @@ if(isset($_GET["userid"])){
 $sql = "SELECT * FROM credentials WHERE username!='" . $_SESSION['username'] . "'";
 $result = $conn->query($sql);
 while ($row = mysqli_fetch_array($result)) {
-echo "<a class='user list-group-item' style='display: none;' onclick='window.location.href=\"../messenger/?userid=" . $row["ID"] . "\"'>" . $row["username"] . "</a>";
+  $img = "<img src='../res/profpic/default.svg' class='card-img-top userimage-list align-self-center' alt=''>";
+  if(file_exists("../res/profpic/" . $row["ID"] . ".png")){
+    $img = "<img src='../res/profpic/" . $row["ID"] . ".png' class='card-img-top userimage-list align-self-center' alt=''>";
+
+  }
+echo "
+<li class='list-group-item flex-row userlist'>
+" . $img . "
+<a class='user-a border-0 list-group-item' style='display: none;' onclick='window.location.href=\"../messenger/?userid=" . $row["ID"] . "\"'>" . $row["username"] . "
+</a>
+</li>";
 }
 ?>
-</div>
+</ul>
 
 </div>
 </div>
 </div>
-<div class="container flex-column d-flex">
+<div class="container flex-column d-flex message-box">
 
 <?php
 $sql = "SELECT * FROM messenger WHERE senderid=" . $userid . " AND receiverid=" . $otherid . " OR senderid=" . $otherid . " AND receiverid=" . $userid . "";
 $result = $conn->query($sql);
 while ($row = mysqli_fetch_array($result)) {
   if($row["senderid"] == $userid){
-    echo "<p class='message message-to text-decoration-none float-right'>" . $row["content"] . "</p>";
+    echo "<p class='message message-to text-decoration-none'>" . $row["content"] . "</p>";
   } else {
-    echo "<p class='message bg-primary message-from text-decoration-none float-left'>" . $row ["content"] . "</p>";
+    echo "<p class='message bg-primary message-from text-decoration-none'>" . $row ["content"] . "</p>";
   }
 }
 
@@ -146,26 +159,33 @@ while ($row = mysqli_fetch_array($result)) {
 </div>
 </div>
 
- <div class="navbar fixed-bottom input-group mb-3 send-form">
+<footer class="mt-auto send-form">
+  <div class="container input-group mb-3">
    <input type="text" class="send form-control" placeholder="Wpisz wiadomość..." aria-label="Recipient's username" aria-describedby="button-addon2">
-   <button class="sendbtn btn btn-outline-secondary" onclick="sendMess();" type="button" id="button-addon2">Wyślij</button>
+   <button class="sendbtn btn btn-outline-secondary" onclick="sendMess();" type="button" id="button-addon2"><i class="fa-solid fa-paper-plane"></i></button>
  </div>
+ </footer>
 
 <script>
+  $('.message-box').scrollTop($('.message-box')[0].scrollHeight);
+
+
+
+
 
 $(document).click(function() {
     console.log('clicked outside');
-    $(".user").hide();
+    $(".row-fluid").hide();
 });
 
 $("#myInput").click(function(event) {
     console.log('clicked inside');
-    $(".user").show();
+    $(".row-fluid").show();
     filterFunction();
     event.stopPropagation();
 });
 
-$(".user").click(function() {
+$(".row-fluid").click(function() {
   console.log($(this).text());
 });
 
@@ -189,6 +209,9 @@ function filterFunction() {
 
 function sendMess() {
   console.log("aaaa");
+  if ($(".send").val() == "") {
+    return;
+  }
   $.ajax({
     url: "../profile/upload.php?message=" + $(".send").val() + "&senderid=" + <?php echo $userid ?> + "&receiverid=" + <?php echo $otherid ?>,
     type:'HEAD',
@@ -197,6 +220,9 @@ function sendMess() {
         console.log("sukces");
     }
   });
+  $(".message-box").append("<p class='message message-to text-decoration-none'>" + $(".send").val() + "</p>");
+  $(".send").val("");
+  $('.message-box').scrollTop($('.message-box')[0].scrollHeight);
 }
 
 $.ajax({
