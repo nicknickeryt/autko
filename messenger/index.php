@@ -31,6 +31,7 @@
           </button>
    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <div class="navbar-nav ml-auto">
+                      <a href="../oferta" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
                       <a href="../ogloszenia" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
                       <a href="../onas" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
                     </div>

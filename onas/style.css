@@ -1,0 +1,36 @@
+@font-face {
+  font-family: TexGyreA;
+  src: url("../res/font/texgyreadventor-regular.otf");
+}
+
+* {
+  font-family: TexGyreA;
+}
+.hider {
+  background-image: url('../res/polonez.jpg');
+  height: 100vh;
+  background-size: 300vh;
+  width: 100vw;
+  top: 0;
+  z-index: -1;
+}
+
+.header{
+  text-shadow: 0px 0px 5px #4f4f4f;
+}
+
+.text {
+  margin: 30px;
+  padding: 10px;
+  margin-left: 100px;
+  margin-right: 10px;
+}
+
+.autko {
+  display: none;
+  height: 12rem;
+}
+
+.navbar {
+  box-shadow: 0 0 5px;
+}

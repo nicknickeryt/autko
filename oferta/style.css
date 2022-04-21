@@ -1,0 +1,13 @@
+@font-face {
+  font-family: TexGyreA;
+  src: url("../res/font/texgyreadventor-regular.otf");
+}
+
+* {
+  font-family: TexGyreA;
+}
+
+
+.navbar {
+  box-shadow: 0 0 5px;
+}

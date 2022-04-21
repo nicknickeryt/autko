@@ -20,17 +20,17 @@
   </script>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-          <img src="res/whiteweb.png" alt="" height="64">
+          <a class="navbar-brand" href="../">
+          <img src="../res/whiteweb.png" alt="" height="64">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
  <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav ml-auto">
-                    <a href="oferta" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
-                    <a href="ogloszenia" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
-                    <a href="onas" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
+                    <a href="../oferta" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
+                    <a href="../ogloszenia" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
+                    <a href="#" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
                   </div>
 
               </div>
@@ -44,7 +44,8 @@
                                 ' . $_SESSION["username"] . '
                               </a>
                               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="profile">Profil</a></li>
+                                <li><a class="dropdown-item" href="../messenger">Wiadomości</a></li>
+                                <li><a class="dropdown-item" href="../profile">Profil</a></li>
                                 <li><a class="dropdown-item" href="login/logout.php">Wyloguj</a></li>
                               </ul>
                       </div>';
@@ -56,13 +57,47 @@
                 </div>
             </div>
     </nav>
+    <br>
 
-<div class="text-center bg-image hider">
-  <div class="blur">
-    <h1 class="title"><span class="titletext">Zaufaj <span class="animation">najlepszym</span></span>
-      <img class="autko" src="res/col.png"></img>
-    </h1>
-  </div>
-</div>
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-sm">
+          <div class="card h-100">
+          <img src="../res/polonez.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Polonez Caro</h5>
+            <p class="card-text">cokolwiek</p>
+            <a href="polonez" class="btn btn-primary">Sprawdź parametry</a>
+            <a href="../kontakt" class="btn btn-primary">Zapytaj</a>
+          </div>
+        </div>
+        </div>
+        <div class="col-sm">
+          <div class="card h-100">
+          <img src="../res/seicento.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Fiat Seicento</h5>
+            <p class="card-text">cokolwiek</p>
+            <a href="seicento" class="btn btn-primary">Sprawdź parametry</a>
+            <a href="../kontakt" class="btn btn-primary">Zapytaj</a>
+          </div>
+        </div>
+        </div>
+        <div class="col-sm">
+          <div class="card h-100">
+          <img src="../res/lanos.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Daewoo Lanos</h5>
+            <p class="card-text">cokolwiek</p>
+            <a href="lanos" class="btn btn-primary">Sprawdź parametry</a>
+            <a href="../kontakt" class="btn btn-primary">Zapytaj</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
 </body>
 </html>
