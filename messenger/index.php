@@ -21,6 +21,11 @@
     crossorigin="anonymous"></script>
     <script src="profile.js">
     </script>
+
+    <div class="d-flex page">
+
+
+            <div class="d-flex kontener">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
             <a class="navbar-brand" href="../">
@@ -84,6 +89,7 @@
               </div>
       </nav>
 
+
       <div class="input-group">
         <div id="myDropdown">
           <div class="d-flex justify-content-between">
@@ -105,14 +111,15 @@ if(isset($_GET["userid"])){
     <div class="card-body">';
   echo '<h5 class="card-title align-self-center">' . $otherusername . '</h5>
 
-  </div>
-  </div>
-   </div>';
+  </div>';
+
 }
+echo '</div>
+   </div>';
 ?>
 
 
-<ul class='row-fluid container list-group'>
+<ul class='row-fluid container list-group lista'>
 
 
 
@@ -137,10 +144,11 @@ echo "
 
 </div>
 </div>
-</div>
+<center class="message-box-center">
 <div class="container flex-column d-flex message-box">
 
 <?php
+if(isset($_GET["userid"])){
 $sql = "SELECT * FROM messenger WHERE senderid=" . $userid . " AND receiverid=" . $otherid . " OR senderid=" . $otherid . " AND receiverid=" . $userid . "";
 $result = $conn->query($sql);
 while ($row = mysqli_fetch_array($result)) {
@@ -151,12 +159,10 @@ while ($row = mysqli_fetch_array($result)) {
   }
 }
 
-
+}
 ?>
-</div>
 
 
-</div>
 </div>
 </div>
 
@@ -167,6 +173,10 @@ while ($row = mysqli_fetch_array($result)) {
  </div>
  </footer>
 
+
+</div>
+</div>
+
 <script>
   $('.message-box').scrollTop($('.message-box')[0].scrollHeight);
 
@@ -176,17 +186,17 @@ while ($row = mysqli_fetch_array($result)) {
 
 $(document).click(function() {
     console.log('clicked outside');
-    $(".row-fluid").hide();
+    $(".lista").hide();
 });
 
 $("#myInput").click(function(event) {
     console.log('clicked inside');
-    $(".row-fluid").show();
+    $(".lista").show();
     filterFunction();
     event.stopPropagation();
 });
 
-$(".row-fluid").click(function() {
+$(".lista").click(function() {
   console.log($(this).text());
 });
 
@@ -214,7 +224,13 @@ function sendMess() {
     return;
   }
   $.ajax({
-    url: "../profile/upload.php?message=" + $(".send").val() + "&senderid=" + <?php echo $userid ?> + "&receiverid=" + <?php echo $otherid ?>,
+    url: "../profile/upload.php?message=" + $(".send").val() + "&senderid=" + <?php echo $userid ?> + "&receiverid=" + <?php
+    if(isset($otherid)) {
+      echo $otherid;
+    } else {
+      echo "none";
+    }
+ ?>,
     type:'HEAD',
     success: function()
     {
@@ -237,15 +253,44 @@ $.ajax({
   success: function()
   {
         $(".userimage").attr("src", "../res/profpic/" + "<?php
+
+        if(isset($otherid)){
         if(file_exists("../res/profpic/" . $otherid . '.png'  )) {
           echo $otherid . '.png?' . filemtime('../res/profpic/' . $otherid . '.png');
         } else {
           echo "default.svg";
         }
+      } else {
+        echo "none";
+      }
          ?>");
 
   }
 });
+
+
+if(<?php
+if(isset($otherid)) {
+  echo "1";
+} else {
+  echo "0";
+}
+ ?> == "0") {
+   $(".sendbtn").addClass("disabled");
+ }
+
+if(<?php
+ if(isset($otherid)) {
+   echo "1";
+ } else {
+   echo "0";
+ }
+  ?> == "0")
+   {
+ const interval = setInterval(function() {
+   
+  }, 5000);
+}
 
 </script>
 
