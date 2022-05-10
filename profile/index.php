@@ -29,7 +29,6 @@
           </button>
    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <div class="navbar-nav ml-auto">
-                      <a href="../oferta" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
                       <a href="../ogloszenia" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
                       <a href="../onas" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
                     </div>
@@ -46,6 +45,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                   <li><a class="dropdown-item" href="#">Profil</a></li>
+                                  <li><a class="dropdown-item" href="../messenger">Wiadomości</a></li>
                                   <li><a class="dropdown-item" href="../login/logout.php">Wyloguj</a></li>
                                 </ul>
                         </div>';
@@ -161,7 +161,7 @@ $.ajax({
   $userimg = "default.svg";
   if(file_exists("../res/profpic/" . $userid . '.png'  )) {
     echo $userid . '.png?' . filemtime('../res/profpic/' . $userid . '.png');
-    $userimg = $userid + ".png";
+    $userimg = $userid . ".png";
   } else {
     echo $userimg;
   }?>",

@@ -173,6 +173,7 @@
   border-radius: 5px;
   text-decoration: none;
   width: fit-content;
+  box-shadow: 0 0 5px #4f4f4f;
 }
 
 .message-from {
@@ -238,4 +239,8 @@ max-height: 65vh;
 
 .message-box-center {
   width: 100%;
+}
+
+.username-label {
+  margin: 0;
 }

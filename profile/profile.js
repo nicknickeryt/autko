@@ -6,14 +6,7 @@ window.onload = function() {
     $("#descModal").modal("toggle");
   });
   $("#submitd").click(function () {
-    $.ajax({
-      url: "upload.php?desc=" + $('.desc-inp').val(),
-      type:'HEAD',
-      success: function()
-      {
-          console.log("sukces");
-      }
-    });
+    window.location.href = "upload.php?desc=" + $('.desc-inp').val();
   });
 $("#lf").click(function()  {
   uploadFile();
@@ -40,6 +33,7 @@ $("#lf").click(function()  {
           reason = "Błąd: nieprawidłowy format.";
         }
       alert(reason);
+      window.location.reload();
     }).then(data => {
         console.log(data);
     }));

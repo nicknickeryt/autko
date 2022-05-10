@@ -40,7 +40,11 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 if(isset($_POST["register"])){
-  if(isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["username"])) {
+
+
+
+  if(isset($_POST["regpassword"]) && isset($_POST["regemail"]) && isset($_POST["regusername"])) {
+
     $username = $_POST["regusername"];
     $password = $_POST["regpassword"];
     $email = $_POST["regemail"];
@@ -148,7 +152,7 @@ else if (isset($_POST["login"])) {
           <label class="form-check-label checkbox-left" for="exampleCheck1">Otrzymuj wiadomości od administracji</label>
         </div>
         <a class="btn btn-danger" role="button" href="../"><i class="fa-solid fa-circle-xmark"></i></a>
-        <button type="button" class="btn btn-primary" name="register">Zarejestruj się</button>
+        <button type="submit" class="btn btn-primary" name="register">Zarejestruj się</button>
       </form>
 
 

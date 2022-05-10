@@ -45,6 +45,7 @@
                               </a>
                               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="profile">Profil</a></li>
+                                <li><a class="dropdown-item" href="messenger">Wiadomości</a></li>
                                 <li><a class="dropdown-item" href="login/logout.php">Wyloguj</a></li>
                               </ul>
                       </div>';
