@@ -18,6 +18,9 @@
   crossorigin="anonymous"></script>
   <script src="index.js">
   </script>
+  <div class="d-flex body">
+    <div class="d-flex page">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -65,5 +68,25 @@
     </h1>
   </div>
 </div>
+</div>
+<div class="divider">
+  <h1 class="headertext">Dlaczego my?</h1>
+  <p>
+  Jestesmy naj i wgl dsjfwanfjnawjinfjnjkcn nan</p>
+</div>
+
+</div>
+
+<script>
+$('document').ready(function() {
+  var audio = {};
+        audio["walk"] = new Audio();
+        audio["walk"].src = "res/pling.mp3"
+        audio["walk"].addEventListener('load', function () {
+            audio["walk"].play();
+  });
+});
+</script>
+
 </body>
 </html>

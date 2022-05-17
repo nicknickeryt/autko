@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel=stylesheet href="profile.css">
+    <link rel=stylesheet href="messenger.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/solid.min.css" integrity="sha512-qzgHTQ60z8RJitD5a28/c47in6WlHGuyRvMusdnuWWBB6fZ0DWG/KyfchGSBlLVeqAz+1LzNq+gGZkCSHnSd3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,7 +19,7 @@
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
-  <script src="profile.js">
+  <script src="messenger.js">
   </script>
 
   <div class="d-flex page">
@@ -145,7 +145,7 @@ echo "
 
 </div>
 </div>
-<center class="message-box-center">
+</div>
 <div class="container flex-column d-flex message-box">
 
 <?php
@@ -164,7 +164,6 @@ if($row["senderid"] == $userid){
 ?>
 
 
-</div>
 </div>
 
 <footer class="mt-auto send-form">
@@ -289,22 +288,31 @@ if(isset($otherid)) {
 ?> == "0")
 
 
-setInterval(function(){
-}, 5000);
+
+  setInterval(function(){
+  }, 5000);
+
 
 function refresh() {
-
-
 
     var lastmessage = $(".message-from").last().data("id");
     var newmessage = lastmessage;
 
     console.log("sprawdzam..");
+
     $.ajax({
-    url: "refresh.php?senderid=" + <?php echo $otherid; ?> + "&receiverid=" + <?php echo $userid; ?>,
+    url: "refresh.php?senderid=" + <?php
+
+    if(isset($otherid) && isset($userid)) {
+     echo $otherid; ?> + "&receiverid=" + <?php echo $userid;
+   } else {
+     echo "'dummy'";
+   }?>,
     type:'POST',
     success: function( data )
     {
+
+
       console.log("tescik: " + data + " last: " + lastmessage)
       var newmessage = data;
 
@@ -312,17 +320,43 @@ function refresh() {
           console.log(newmessage > lastmessage);
           console.log("new: " + newmessage + " last: " + lastmessage);
 
-      if( newmessage > lastmessage){
+      if(newmessage > lastmessage){
+
+        $.ajax({
+        url: "newmessage.php?id=" + newmessage,
+        type:'POST',
+        success: function( content )
+        {
+                 $(".message-box").append($("<p class='message bg-primary message-from text-decoration-none' data-id='" + newmessage +   "'>" + content +  "</p>"));
+        }});
+
+
         lastmessage = newmessage;
-        
+        $(".message-box").animate({ scrollTop: $('.message-box').prop("scrollHeight")}, 1000);
       }
     }});
 
 
 }
 
-var myInterval = setInterval(refresh, 1000);
 
+if(<?php if(isset($otherid)) {
+  echo 1;
+} else {
+  echo 0;
+} ?>
+ == 1) {
+var myInterval = setInterval(refresh, 1000);
+}
+
+$(".receiver").click(function(){
+  location.href = "../profile/u?u=" + <?php
+  if(isset($_GET["userid"])){
+  echo $_GET["userid"];
+} else {
+  echo "dummy";
+} ?>
+});
 
 </script>
 

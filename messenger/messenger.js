@@ -33,7 +33,3 @@ $("#lf").click(function()  {
     }));
 }
 };
-
-
-
-$(".message-from").last().data("id");

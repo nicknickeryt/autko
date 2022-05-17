@@ -153,9 +153,13 @@
   position: absolute;
   z-index: 100;
   box-shadow: 0 0 10px #4f4f4f;
+  max-height: 50vh;
+  display: none;
+  overflow-y: scroll;
 }
 
 .receiver {
+  cursor: pointer;
   margin: 10px;
   height: 6vh;
   padding: 15px;
