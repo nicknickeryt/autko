@@ -7,6 +7,97 @@
   font-family: TexGyreA;
 }
 
+
+.navbar {
+  background: transparent;
+  transition: 0.5s;
+}
+
+.white {
+  backdrop-filter: blur(60px);
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 0 15px #4f4f4f;
+}
+
+@-webkit-keyframes hvr-ripple-in {
+  100% {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+  }
+}
+@keyframes hvr-ripple-in {
+  100% {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+  }
+}
+  .hvr-ripple-in {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+}
+.hvr-ripple-in:before {
+  content: '';
+  position: absolute;
+  border: #e1e1e1 solid 4px;
+  border-radius: 4px;
+  top: -12px;
+  right: -12px;
+  bottom: -12px;
+  left: -12px;
+  opacity: 0;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+}
+.hvr-ripple-in:hover:before, .hvr-ripple-in:focus:before, .hvr-ripple-in:active:before {
+  -webkit-animation-name: hvr-ripple-in;
+  animation-name: hvr-ripple-in;
+}
+
+.hvr-white {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+}
+.hvr-white:before {
+  content: '';
+  position: absolute;
+  border: rgba(0, 0, 0, 0.32) solid 4px;
+  border-radius: 4px;
+  top: -12px;
+  right: -12px;
+  bottom: -12px;
+  left: -12px;
+  opacity: 0;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+}
+.hvr-white:hover:before, .hvr-white:focus:before, .hvr-white:active:before {
+  -webkit-animation-name: hvr-ripple-in;
+  animation-name: hvr-ripple-in;
+}
+
+.nav-link:hover {
+background: rgba(255, 255, 255, 0.47);
+border-radius: 7px;
+}
+
+.whitetext {
+  color: white !important;
+}
+
 .hider {
   background-image: url('../res/polonez.jpg');
   height: 100vh;
