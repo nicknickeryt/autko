@@ -54,7 +54,7 @@
                       </div>';
                     }
                     else {
-                      echo '<a href="login" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
+                      echo '<a href="login" data-toggle="collapse" class="nav-item whitetext nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
                     }
                   ?>
                 </div>

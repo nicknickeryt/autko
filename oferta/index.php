@@ -18,7 +18,9 @@
   crossorigin="anonymous"></script>
   <script src="index.js">
   </script>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="d-flex body">
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="../">
           <img src="../res/whiteweb.png" alt="" height="64">
@@ -28,9 +30,9 @@
         </button>
  <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav ml-auto">
-                    <a href="../oferta" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
-                    <a href="../ogloszenia" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
-                    <a href="#" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
+                    <a href="../oferta" data-toggle="collapse" class="nav-item hvr-ripple-in nav-link whitetext text-uppercase font-weight-bold"><span>OFERTA</span></a>
+                    <a href="../ogloszenia" data-toggle="collapse" class="nav-item hvr-ripple-in nav-link whitetext  text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
+                    <a href="#" data-toggle="collapse" class="nav-item hvr-ripple-in nav-link text-uppercase whitetext font-weight-bold"><span>O NAS</span></a>
                   </div>
 
               </div>
@@ -39,8 +41,8 @@
                     session_start();
                     if(isset($_SESSION["loggedin"])){
                       echo '
-                      <div class="nav-item hvr-ripple-in whitetext dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div class="nav-item hvr-ripple-in dropdown">
+                      <a class="nav-link whitetext dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 ' . $_SESSION["username"] . '
                               </a>
                               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
@@ -51,15 +53,47 @@
                       </div>';
                     }
                     else {
-                      echo '<a href="login" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
+                      echo '<a href="login" data-toggle="collapse" class="nav-item nav-link whitetext text-uppercase font-weight-bold"><span>KONTO</span></a>';
                     }
                   ?>
                 </div>
             </div>
     </nav>
-    <br>
+
+<div class="daewoo page">
+  <div class="slogan d-blur">
+    <img class="daewoo-logo" src="../res/daewoo.png"></img>
+    <span class="slogan-text">Wybór z przyszłością</span>
+  </div>
+</div>
 
 
+<div class="nexia page">
+  <div class="d-blur offer">
+    <div class="container car-offer">
+      <img class="nexia-car-offer" src="../res/nexia-base.png"></img>
+      <div class="container desc">
+      <img class="nexia-logo" src="../res/nexia-logo.png"></img>
+
+        <p>
+          Dynamiczna, oszczędna, nowoczesna. Dostępna w 3 wersjach nadwozia i w 5 kolorach.
+        </p>
+        <div class="color-chooser">
+          <div class="choose c-77l">
+          </div>
+          <div class="choose c-41l">
+          </div>
+          <div class="choose c-91l">
+          </div>
+          <div class="choose c-21u">
+          </div>
+          <div class="choose c-64l">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="container">
       <div class="row gy-3">
         <div class="col-sm">
@@ -97,6 +131,7 @@
         </div>
       </div>
     </div>
+  </div>
 
 
 </body>

@@ -7,15 +7,13 @@
   font-family: TexGyreA;
 }
 
-
 .navbar {
-  background: transparent;
   transition: 0.5s;
 }
 
 .white {
   backdrop-filter: blur(60px);
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.7) !important;
   box-shadow: 0 0 15px #4f4f4f;
 }
 
@@ -99,5 +97,133 @@ border-radius: 7px;
 }
 
 .navbar {
-  box-shadow: 0 0 5px;
+  background: transparent;
+  transition: 0.5s;
+}
+
+.body {
+  flex-direction: column;
+    padding: 0;
+}
+
+.page {
+  height: 100vh;
+  background-size: cover;
+}
+
+.daewoo {
+    background-image: url('../res/nexia.jpg');
+    }
+
+.d-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    vertical-align: middle;
+    display: flex;
+      height: 100%;
+
+}
+
+.nexia {
+  background-image: url('../res/nexia-2.jpeg');
+}
+
+.slogan {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+}
+
+.offer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.nexia-logo {
+  width: 10vw;
+}
+
+.car-offer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.nexia-car-offer {
+  width: auto;
+  height: 50vh;
+}
+
+.desc {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  color: white;
+}
+
+.color-chooser {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+}
+
+.color-chooser > div {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 6px;
+  margin: 5px;
+  border: 1px solid white;
+}
+
+.c-77l {
+  background-color: #731724;
+}
+
+.c-41l {
+  background-color: #08423f
+}
+
+.c-91l {
+  background-color: #bec2c6
+}
+
+.c-21u {
+  background-color: #1d5689
+}
+
+.c-64l {
+  background-color: #d4ccc0
+}
+
+.daewoo-logo {
+  width: auto;
+  height: 13vh;
+
+}
+
+.slogan-text {
+  color: white;
+  font-size: 3rem;
+  text-decoration: none;
+
+}
+
+a, a:hover {
+  color: inherit;
+  text-decoration: none;
 }
