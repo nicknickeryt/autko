@@ -1,6 +1,6 @@
 @font-face {
   font-family: TexGyreA;
-  src: url("../res/font/texgyreadventor-regular.otf");
+  src: url("../../res/font/texgyreadventor-regular.otf");
 }
 
 * {
@@ -13,7 +13,7 @@
 
 .white {
   backdrop-filter: blur(60px);
-  background: rgba(255,255,255,0.7) !important;
+  background: rgba(255, 255, 255, 0.7) !important;
   box-shadow: 0 0 15px #4f4f4f;
 }
 
@@ -26,6 +26,7 @@
     opacity: 1;
   }
 }
+
 @keyframes hvr-ripple-in {
   100% {
     top: 0;
@@ -35,7 +36,8 @@
     opacity: 1;
   }
 }
-  .hvr-ripple-in {
+
+.hvr-ripple-in {
   display: inline-block;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
@@ -43,6 +45,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
 }
+
 .hvr-ripple-in:before {
   content: '';
   position: absolute;
@@ -56,6 +59,7 @@
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
 }
+
 .hvr-ripple-in:hover:before, .hvr-ripple-in:focus:before, .hvr-ripple-in:active:before {
   -webkit-animation-name: hvr-ripple-in;
   animation-name: hvr-ripple-in;
@@ -69,6 +73,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   position: relative;
 }
+
 .hvr-white:before {
   content: '';
   position: absolute;
@@ -82,14 +87,15 @@
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
 }
+
 .hvr-white:hover:before, .hvr-white:focus:before, .hvr-white:active:before {
   -webkit-animation-name: hvr-ripple-in;
   animation-name: hvr-ripple-in;
 }
 
 .nav-link:hover {
-background: rgba(255, 255, 255, 0.47);
-border-radius: 7px;
+  background: rgba(255, 255, 255, 0.47);
+  border-radius: 7px;
 }
 
 .whitetext {
@@ -103,7 +109,7 @@ border-radius: 7px;
 
 .body {
   flex-direction: column;
-    padding: 0;
+  padding: 0;
 }
 
 .page {
@@ -112,20 +118,19 @@ border-radius: 7px;
 }
 
 .daewoo {
-    background-image: url('../res/nexia.jpg');
-    }
+  background-image: url('../../res/nexia.jpg');
+}
 
 .d-blur {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    vertical-align: middle;
-    display: flex;
-      height: 100%;
-
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: middle;
+  display: flex;
+  height: 100%;
 }
 
 .nexia {
-  background-image: url('../res/nexia-2.jpeg');
+  background: whitesmoke;
 }
 
 .slogan {
@@ -135,7 +140,6 @@ border-radius: 7px;
   justify-content: center;
   align-items: center;
   align-content: center;
-
 }
 
 .offer {
@@ -183,7 +187,7 @@ border-radius: 7px;
   padding: 15px;
 }
 
-.color-chooser > div {
+.color-chooser>div {
   width: 3rem;
   height: 3rem;
   border-radius: 6px;
@@ -220,17 +224,16 @@ border-radius: 7px;
   transform: scale(1.2);
   filter: brightness(2);
 }
+
 .daewoo-logo {
   width: auto;
   height: 13vh;
-
 }
 
 .slogan-text {
   color: white;
   font-size: 3rem;
   text-decoration: none;
-
 }
 
 a, a:hover {
@@ -240,4 +243,66 @@ a, a:hover {
 
 img {
   object-fit: contain;
+}
+
+.hBack {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  align-content: center;
+}
+
+.hBack>i {
+  width: 100%;
+  font-size: 3rem;
+  margin-left: 1rem;
+}
+
+.buy-form {
+  flex-direction: column;
+}
+
+.nadwozie {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card.select-nadwozie, .card.select-silnik {
+  cursor: pointer;
+  width: 20vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-evenly;
+  align-items: center;
+}
+
+.card.select-wersja {
+  cursor: pointer;
+  width: 20vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  align-self: stretch;
+  align-content: center;
+}
+
+
+.title {
+  margin: 40px;
+}
+
+.empty {
+  height: 20vh;
+  padding-bottom: 50px;
 }

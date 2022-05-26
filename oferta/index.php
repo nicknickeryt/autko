@@ -90,6 +90,15 @@
           <div class="choose c-64l">
           </div>
         </div>
+        <p>
+          Dynamiczny sedan, uniwersalny hatchback czy rodzinne kombi? Ty wybierasz.
+        </p>
+        <center>
+        <div class="container align-self-center">
+        <p class="lead">Daj szansę Nexii. Spróbuj już dziś.</p>
+        <a href="nexia"class="btn btn-primary btn-lg">Sprawdź ofertę</a>
+      </center>
+      </div>
       </div>
     </div>
   </div>
