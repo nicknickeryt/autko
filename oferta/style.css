@@ -3,6 +3,11 @@
   src: url("../res/font/texgyreadventor-regular.otf");
 }
 
+@font-face {
+  font-family: atu;
+  src: url("../res/font/cd.ttf");
+}
+
 * {
   font-family: TexGyreA;
 }
@@ -113,6 +118,10 @@ border-radius: 7px;
 
 .daewoo {
     background-image: url('../res/nexia.jpg');
+  }
+
+.polonez-b {
+      background-image: url('../res/polonez-1-background.jpg');
     }
 
 .d-blur {
@@ -126,6 +135,14 @@ border-radius: 7px;
 
 .nexia {
   background-image: url('../res/nexia-2.jpeg');
+}
+
+.aveo {
+  background-image: url('../res/aveo-background.jpg');
+}
+
+.polonez {
+  background-image: url('../res/polonez-background.jpeg');
 }
 
 .slogan {
@@ -147,9 +164,11 @@ border-radius: 7px;
   align-content: center;
 }
 
-.nexia-logo {
+.nexia-logo, .aveo-logo, .polonez-logo {
   width: 10vw;
+  margin: 15px;
 }
+
 
 .car-offer {
   display: flex;
@@ -161,10 +180,23 @@ border-radius: 7px;
   border-radius: 10px;
 }
 
-.nexia-car-offer {
-  width: auto;
-  height: 50vh;
+.nexia-car-offer, .aveo-car-offer, .polonez-car-offer {
+  width: 50vw;
+  height: auto;
   padding: 20px;
+}
+
+
+@media only screen and (max-width: 810px) {
+  .car-offer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
 }
 
 .desc {
@@ -221,16 +253,20 @@ border-radius: 7px;
   filter: brightness(2);
 }
 .daewoo-logo {
-  width: auto;
-  height: 13vh;
-
+  width: 73vw;
+  height: auto;
 }
 
 .slogan-text {
   color: white;
   font-size: 3rem;
   text-decoration: none;
+}
 
+.fso-slogan {
+  font-family: Atu;
+  font-weight: bold;
+  text-shadow: 0 0 5px black;
 }
 
 a, a:hover {

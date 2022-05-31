@@ -1,6 +1,45 @@
   <!doctype html>
   <html lang="en">
     <head>
+      <link rel="icon" type="image/x-icon" href="../../res/favicon.ico">
+      <?php
+        session_start();
+        $u = $_GET["u"];
+
+
+        $config = parse_ini_file('../../conf/db.ini');
+
+
+        $user = $config['dbuser'];
+        $pass = $config['dbpassword'];
+        $host = $config['dbhost'];
+        $dbdb = $config['dbdatabase'];
+
+        $username = "";
+        $email = "";
+        // Create connection
+        $conn = new mysqli($host, $user, $pass, $dbdb);
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+        $sql = "SELECT * FROM credentials WHERE ID='" . $u . "'";
+        $result = $conn->query($sql);
+        if ($row = mysqli_fetch_array($result)) {
+        $username = $row['username'];
+        $email = $row['mail'];
+        $userid = $row['ID'];
+        }
+        $sql = "SELECT * FROM profiles WHERE ID='" . $u . "'";
+        $result = $conn->query($sql);
+        if ($row = mysqli_fetch_array($result)) {
+        $opis = $row['opis'];
+        }
+
+        ?>
+      <title>
+        Autko | Profil <?php echo $username; ?>
+      </title>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,27 +66,25 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                   <div class="navbar-nav ml-auto">
-                      <a href="../../oferta" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
-                      <a href="../../ogloszenia" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
-                      <a href="../../onas" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
+                      <a href="../../oferta" data-toggle="collapse" class="nav-item hvr-ripple-in nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
+                      <a href="../../ogloszenia" data-toggle="collapse" class="nav-item hvr-ripple-in nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
+                      <a href="../../onas" data-toggle="collapse" class="nav-item hvr-ripple-in nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
                     </div>
 
-                </div>
                 <div class="navbar-nav navbar-right">
                     <?php
-                      session_start();
-                      $u = $_GET["u"];
                       if(isset($_SESSION["loggedin"])){
                         echo '
                         <div class="nav-item dropdown">
-                        <a class="nav-link hvr-ripple-in whitetext dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link hvr-ripple-in dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                   ' . $_SESSION["username"] . '
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                  <li><a class="dropdown-item" href="#">Profil</a></li>
+                                  <li><a class="dropdown-item" href="../">Profil</a></li>
                                   <li><a class="dropdown-item" href="../../messenger">Wiadomości</a></li>
+                                  <li><a class="dropdown-item" href="../../cart">Koszyk</a></li>
                                   <li><a class="dropdown-item" href="../../login/logout.php">Wyloguj</a></li>
                                 </ul>
                         </div>';
@@ -56,40 +93,17 @@
                         echo '<a href="login" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
                       }
 
-                      $user = "autko";
-                      $pass = "autko";
-                      $host = "localhost";
-                      $dbdb = "autko";
 
-                      $username = "";
-                      $email = "";
-                      // Create connection
-                      $conn = new mysqli($host, $user, $pass, $dbdb);
-                  // Check connection
-                  if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                  }
-                  $sql = "SELECT * FROM credentials WHERE ID='" . $u . "'";
-                  $result = $conn->query($sql);
-                  if ($row = mysqli_fetch_array($result)) {
-                    $username = $row['username'];
-                    $email = $row['mail'];
-                    $userid = $row['ID'];
-                  }
-                  $sql = "SELECT * FROM profiles WHERE ID='" . $u . "'";
-                  $result = $conn->query($sql);
-                  if ($row = mysqli_fetch_array($result)) {
-                    $opis = $row['opis'];
-                  }
 
 
                     ?>
                   </div>
+
+                                  </div>
               </div>
       </nav>
       <div class="text-center bg-image hider">
         <div class="blur">
-          <center>
 
             <div class="card profile" style="width: 65vw;">
               <div class="card-body flex align-self-center">

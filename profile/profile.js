@@ -32,6 +32,8 @@ $("#lf").click(function()  {
         if(response.status == 415){
           reason = "Błąd: nieprawidłowy format.";
         }
+      console.log(formData);
+      console.log(response);
       alert(reason);
       window.location.reload();
     }).then(data => {

@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="icon" type="image/x-icon" href="../res/favicon.ico">
+    <title>
+      Autko | O nas
+    </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,54 +22,74 @@
   crossorigin="anonymous"></script>
   <script src="index.js">
   </script>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../">
-          <img src="../res/whiteweb.png" alt="" height="64">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="navbar-nav ml-auto">
-                    <a href="../oferta" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
-                    <a href="../ogloszenia" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
-                    <a href="#" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
-                  </div>
+  <div class="d-flex body">
+      <div class="d-flex page">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="../">
+              <img src="../res/whiteweb.png" alt="" height="64">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                    <div class="navbar-nav ml-auto">
+                        <a href="../oferta" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
+                        <a href="../ogloszenia" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
+                        <a href="#" data-toggle="collapse" class="nav-item whitetext hvr-ripple-in nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
+                      </div>
 
-              </div>
-              <div class="navbar-nav navbar-right">
-                  <?php
-                    session_start();
-                    if(isset($_SESSION["loggedin"])){
-                      echo '
-                      <div class="nav-item dropdown">
-                      <a class="nav-link hvr-ripple-in whitetext dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                ' . $_SESSION["username"] . '
-                              </a>
-                              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="profile">Profil</a></li>
-                                <li><a class="dropdown-item" href="messenger">Wiadomości</a></li>
-                                <li><a class="dropdown-item" href="login/logout.php">Wyloguj</a></li>
-                              </ul>
-                      </div>';
-                    }
-                    else {
-                      echo '<a href="login" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
-                    }
-                  ?>
+                  <div class="navbar-nav navbar-right">
+                      <?php
+                        session_start();
+                        if(isset($_SESSION["loggedin"])){
+                          echo '
+                          <div class="nav-item dropdown">
+                          <a class="nav-link hvr-ripple-in whitetext dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    ' . $_SESSION["username"] . '
+                                  </a>
+                                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="../profile">Profil</a></li>
+                                    <li><a class="dropdown-item" href="../messenger">Wiadomości</a></li>
+                                    <li><a class="dropdown-item" href="../cart">Koszyk</a></li>
+                                    <li><a class="dropdown-item" href="../login/logout.php">Wyloguj</a></li>
+                                  </ul>
+                          </div>';
+                        }
+                        else {
+                          echo '<a href="../login" data-toggle="collapse" class="nav-item whitetext nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
+                        }
+                      ?>
+                    </div>
+
+                                      </div>
                 </div>
-            </div>
-    </nav>
+        </nav>
 
-<div class="text-center">
-  <div class="text">
-    <h1 class="header">O nas
+
+<div class="text-center bg-image hider">
+  <div class="blur">
+    <h1 class="title"><span class="titletext">Autko - zaufaj najlepszym</span>
     </h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <p class="desc">      Autko to salon samochodowy powstały w 1994 roku jako mały warsztat samochodowy. Z czasem Autko zyskało zaufanie kierowców, rozrosło się i przekształciło w największy salon samochodowy w Krakowie. Dziś cieszymy się dobrą opinią, długoletnim doświadczeniem i zaufaniem klientów.
+      W Autku znajdą państwo oferty znanych marek. Jesteśmy oficjalnym dealerem marek Daewoo i Chevrolet oraz FSO.
+      Oferujemy zarówno samochody nowe, jak i używane. Każdy znajdzie tu odpowiedni dla siebie pojazd.
+      Oprócz oferty pojazdów w Autku znajduje się również serwis pojazdów.
+
+      Lokalizacja: Kraków, ul. Sosnowa 3
+      Kontakt: tel. 289-839-321, email: <a href="mailto:kontakt@autko.pl">kontakt@autko.pl</a>
+
+
     </p>
+    <div class="logos">
+    <img class="logo" src="../res/fso-dealer.png"/>
+    <img class="logo" src="../res/fso-logo.png"/>
+    <img class="logo" src="../res/gmdaewoo.png"/>
+    <img class="logo" src="../res/chevy.png"/>
+  </div>
   </div>
 </div>
+</div>
+
 </body>
 </html>

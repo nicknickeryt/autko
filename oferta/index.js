@@ -42,8 +42,16 @@ $(".animation").delay(2000).animate(
    }
  })
 
- $(".choose").click(function() {
-   $(".nexia-car-offer").attr("src", "../res/nexia-" + $(this).attr('class').split(' ')[1] + ".png");
+ $(".choose-n").click(function() {
+   $(".nexia-car-offer").attr("src", "../res/nexia-" + $(this).attr('class').split(' ')[2] + ".png");
+ });
+
+ $(".choose-a").click(function() {
+   $(".aveo-car-offer").attr("src", "../res/aveo-sedan-" + $(this).attr('class').split(' ')[2] + ".png");
+ });
+
+ $(".choose-p").click(function() {
+   $(".polonez-car-offer").attr("src", "../res/polonez-atu-" + $(this).attr('class').split(' ')[2] + ".png");
  });
 
 });

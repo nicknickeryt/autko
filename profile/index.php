@@ -1,6 +1,10 @@
   <!doctype html>
   <html lang="en">
     <head>
+      <link rel="icon" type="image/x-icon" href="../res/favicon.ico">
+      <title>
+        Autko | Twój profil
+      </title>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,14 +31,13 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                   <div class="navbar-nav ml-auto">
                       <a href="../oferta" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OFERTA</span></a>
                       <a href="../ogloszenia" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>OGŁOSZENIA</span></a>
                       <a href="../onas" data-toggle="collapse" class="nav-item hvr-ripple-in whitetext nav-link text-uppercase font-weight-bold"><span>O NAS</span></a>
                     </div>
 
-                </div>
                 <div class="navbar-nav navbar-right">
                     <?php
                       session_start();
@@ -47,6 +50,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                                   <li><a class="dropdown-item" href="#">Profil</a></li>
                                   <li><a class="dropdown-item" href="../messenger">Wiadomości</a></li>
+                                  <li><a class="dropdown-item" href="../cart">Koszyk</a></li>
                                   <li><a class="dropdown-item" href="../login/logout.php">Wyloguj</a></li>
                                 </ul>
                         </div>';
@@ -55,10 +59,12 @@
                         echo '<a href="login" data-toggle="collapse" class="nav-item nav-link text-uppercase font-weight-bold"><span>KONTO</span></a>';
                       }
 
-                      $user = "autko";
-                      $pass = "autko";
-                      $host = "localhost";
-                      $dbdb = "autko";
+                      $config = parse_ini_file('../conf/db.ini');
+
+                      $user = $config['dbuser'];
+                      $pass = $config['dbpassword'];
+                      $host = $config['dbhost'];
+                      $dbdb = $config['dbdatabase'];
 
                       $username = "";
                       $email = "";
@@ -84,11 +90,12 @@
 
                     ?>
                   </div>
+
+                                  </div>
               </div>
       </nav>
       <div class="text-center bg-image hider">
         <div class="blur">
-          <center>
 
             <div class="card profile" style="width: 65vw;">
               <div class="card-body flex align-self-center">

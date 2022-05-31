@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="icon" type="image/x-icon" href="../../res/favicon.ico">
+    <title>
+      Autko | Daewoo Nexia
+    </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,30 +25,42 @@
   </script>
   <div class="d-flex body">
 
-    <nav class="navbar white navbar-inverse fixed-bottom">
-      <div class="container-fluid">
+    <nav class="navbar white fixed-bottom">
+      <div class="container-fluid flex-nowrap align-items-center">
+      <div class="container-fluid d-flex justify-content-start align-items-center">
         <div class="navbar-header">
-          <a class="navbar-brand ph car">Placeholder</a>
+          <a class="navbar-brand ph-car">Placeholder</a>
         </div>
-        <div class="nav-item">
-        </div>
+        <div class="nav-item ph-nadwozie"></div>
+        &nbsp
+        <div class="nav-item ph-silnik"></div>
+        &nbsp
+        <div class="nav-item ph-wersja"></div>
+      </div>
+      <div class="d-flex align-items-center">
+        <h4 class="cena"></h4>
+        <a class="btn btn-primary align-self-end disabled podsumowanie">Podsumowanie</a>
+      </div>
+      </div>
       </div>
     </nav>
 
 
  <div class="container hBack">
-   <i class="fa-solid fa-arrow-left"></i>
+   <i class="fa-solid fa-arrow-left goback"></i>
  </div>
 
 
    <div class="container d-flex buy-form">
+
+     <img class="logo" src="../../res/col.png"></img>
 
   <h1 class="align-self-center title car-name">Daewoo Nexia</h1>
 
   <h4 class="align-self-center title">Nadwozia</h4>
 <div class="nadwozie">
 
- <div class="card select-nadwozie hvr-ripple-in text-center border border-primary shadow-0 ">
+ <div class="card select-nadwozie hvr-ripple-in text-center border border-primary shadow-0" data-cena="68000" data-id="hatchback">
      <img class="nadwozie-img card-img-top embed-responsive-item" src="../../res/nexia-hatch.png" class="img-fluid" />
 
    <div class="">
@@ -53,7 +69,7 @@
    </div>
  </div>
 
- <div class="card select-nadwozie hvr-ripple-in text-center border border-primary shadow-0 ">
+ <div class="card select-nadwozie hvr-ripple-in text-center border border-primary shadow-0" data-cena="68000" data-id="sedan">
      <img class="nadwozie-img card-img-top embed-responsive-item" src="../../res/nexia-base.png" class="img-fluid" />
 
    <div class="">
@@ -65,9 +81,9 @@
 
 
 <h4 class="align-self-center title">Silniki</h4>
-<div class="nadwozie">
+<div class="nadwozie silnik disabled">
 
-<div class="card select-silnik hvr-ripple-in text-center border border-primary shadow-0 ">
+<div class="card select-silnik hvr-ripple-in text-center border border-primary shadow-0 " data-cena="2000" data-id="1.5 SOHC 75 KM">
    <img class="nadwozie-img card-img-top embed-responsive-item" src="../../res/nexia-silnik.png" class="img-fluid" />
 
  <div class="">
@@ -76,7 +92,7 @@
  </div>
 </div>
 
-<div class="card select-silnik hvr-ripple-in text-center border border-primary shadow-0 ">
+<div class="card select-silnik hvr-ripple-in text-center border border-primary shadow-0" data-cena="3000" data-id="1.5 DOHC 85 KM">
    <img class="nadwozie-img card-img-top embed-responsive-item" src="../../res/nexia-silnik.png" class="img-fluid" />
 
  <div class="">
@@ -85,7 +101,7 @@
  </div>
 </div>
 
- <div class="card select-silnik hvr-ripple-in text-center border border-primary shadow-0 ">
+ <div class="card select-silnik hvr-ripple-in text-center border border-primary shadow-0 " data-cena="5000" data-id="1.6 108 KM">
     <img class="nadwozie-img card-img-top embed-responsive-item" src="../../res/nexia-silnik.png" class="img-fluid" />
 
   <div class="">
@@ -98,9 +114,9 @@
 
 
  <h4 class="align-self-center title">Wyposażenie</h4>
-<div class="nadwozie">
+<div class="nadwozie wersja disabled">
 
-<div class="card select-wersja hvr-ripple-in text-center border border-primary shadow-0 ">
+<div class="card select-wersja hvr-ripple-in text-center border border-primary shadow-0" data-cena="0" data-id="GL">
 
   <div class="">
     <h5 class="card-title">GL</h5>
@@ -109,7 +125,7 @@
   </div>
 </div>
 
-<div class="card select-wersja hvr-ripple-in text-center border border-primary shadow-0 ">
+<div class="card select-wersja hvr-ripple-in text-center border border-primary shadow-0" data-cena="1000" data-id="GLE">
 
   <div class="">
     <h5 class="card-title">GLE</h5>
@@ -118,7 +134,7 @@
   </div>
 </div>
 
-<div class="card select-wersja hvr-ripple-in text-center border border-primary shadow-0 ">
+<div class="card select-wersja hvr-ripple-in text-center border border-primary shadow-0" data-cena="1250" data-id="GLX">
 
   <div class="">
     <h5 class="card-title">GLX</h5>

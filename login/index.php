@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+  <link rel="icon" type="image/x-icon" href="../res/favicon.ico">
+  <title>
+    Autko | Twoje konto
+  </title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,19 +32,21 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
   }
 
-    $user = "autko";
-    $pass = "autko";
-    $host = "localhost";
-    $dbdb = "autko";
+  $config = parse_ini_file('../conf/db.ini');
+
+  $user = $config['dbuser'];
+  $pass = $config['dbpassword'];
+  $host = $config['dbhost'];
+  $dbdb = $config['dbdatabase'];
 
     // Create connection
 $conn = new mysqli($host, $user, $pass, $dbdb);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
+  echo "Sprawdź konfigurację bazy danych! (conf/db.ini)";
 }
 if(isset($_POST["register"])){
-
 
 
   if(isset($_POST["regpassword"]) && isset($_POST["regemail"]) && isset($_POST["regusername"])) {
@@ -52,6 +58,7 @@ if(isset($_POST["register"])){
     if(isset($_POST["Test"])) {
       $news = 1;
     }
+
 
   $sel1 = "SELECT ID FROM credentials WHERE mail='" . $email . "'";
   $resl1 = $conn->query($sel1);

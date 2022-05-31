@@ -1,19 +1,21 @@
 <?php
 session_start();
-$user = "autko";
-$pass = "autko";
-$host = "localhost";
-$dbdb = "autko";
+$config = parse_ini_file('../conf/db.ini');
+
+$user = $config['dbuser'];
+$pass = $config['dbpassword'];
+$host = $config['dbhost'];
+$dbdb = $config['dbdatabase'];
 
 $conn = new mysqli($host, $user, $pass, $dbdb);
-// Check connection
+
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
     if (isset($_FILES['files'])) {
         $errors = [];
         $path = '../res/profpic/';
-	$extensions = ['png'];
+	       $extensions = ['png'];
 
         $all_files = count($_FILES['files']['tmp_name']);
 
@@ -39,8 +41,8 @@ die("Connection failed: " . $conn->connect_error);
 
 		if (empty($errors)) {
 			move_uploaded_file($file_tmp, $file);
-      header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
-      header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+      header("Cache-Control: no-cache, must-revalidate");
+      header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
       echo "success";
 
 		}
@@ -53,10 +55,9 @@ die("Connection failed: " . $conn->connect_error);
 
 else if (isset($_GET["desc"])){
 
-  // Create connection
 $sql = "UPDATE profiles SET opis = '" . $_GET['desc'] . "' WHERE ID = " . $_SESSION['id'] . "";
 if (isset($_SERVER["HTTP_REFERER"])) {
-        header("Location: " . $_SERVER["HTTP_REFERER"]);
+        /*header("Location: " . $_SERVER["HTTP_REFERER"]);*/
     }
 $conn->query($sql);
 }

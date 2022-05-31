@@ -1,9 +1,11 @@
 <?php
 
-$user = "autko";
-$pass = "autko";
-$host = "localhost";
-$dbdb = "autko";
+$config = parse_ini_file('../conf/db.ini');
+
+$user = $config['dbuser'];
+$pass = $config['dbpassword'];
+$host = $config['dbhost'];
+$dbdb = $config['dbdatabase'];
 
 $username = "";
 $email = "";
