@@ -127,7 +127,6 @@ else if (isset($_POST["login"])) {
 
 <div class="text-center bg-image hider">
   <div class="blur">
-    <center>
 <div class="cointainer login-form">
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -183,7 +182,6 @@ else if (isset($_POST["login"])) {
 
 
 </div>
-</center>
     </h1>
   </div>
 </div>

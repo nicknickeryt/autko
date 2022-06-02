@@ -69,7 +69,7 @@
 
 <div class="text-center bg-image hider">
   <div class="blur">
-    <div class="ogl" style="margin-top: 10vh;">
+    <div class="ogl" style="margin-top: 20vh;">
     <h1 class="title"><span class="titletext">Nowa strona internetowa</span>
     </h1>
     <p class="desc">Witamy na nowej stronie Autko!

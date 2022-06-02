@@ -126,7 +126,6 @@
   color: white;
 }
 
-
 .title {
   font-size: 2.5rem;
   color: #fff;
@@ -235,16 +234,17 @@ h1.headertext {
   .page {
     height: 150vh !important;
   }
+
   .logos {
     flex-direction: column;
   }
+
   .logo {
     margin: .2rem;
     height: auto;
     width: 30vw;
   }
 }
-
 
 .ogl {
   background: rgba(0, 0, 0, 0.5);

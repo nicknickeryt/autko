@@ -7,6 +7,11 @@
   font-family: TexGyreA;
 }
 
+
+.body {
+  padding-top: 70px;
+}
+
 .navbar {
   background: transparent;
   transition: 0.5s;
@@ -127,9 +132,9 @@
   color: white;
 }
 
-
 .title {
-  font-size: 3rem;
+  margin-top: 10vh;
+  font-size: 2rem;
   color: #fff;
   text-shadow: 0 0 15px #4f4f4f;
 }
@@ -238,12 +243,18 @@ h1.headertext {
   .page {
     height: 150vh !important;
   }
+
   .logos {
     flex-direction: column;
   }
+
   .logo {
     margin: .2rem;
     height: auto;
     width: 30vw;
+  }
+
+  .blur {
+    padding-top: 170px;
   }
 }

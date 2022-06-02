@@ -150,6 +150,7 @@
     margin: 150px;
     width: 100vw;
     align-self: center;
+    box-shadow: 0 0 15px black;
   }
 
   .card-body.flex {

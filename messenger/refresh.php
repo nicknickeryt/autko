@@ -8,9 +8,9 @@ $host = $config['dbhost'];
 $dbdb = $config['dbdatabase'];
 $username = "";
 $email = "";
-// Create connection
+
 $conn = new mysqli($host, $user, $pass, $dbdb);
-// Check connection
+
 if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }

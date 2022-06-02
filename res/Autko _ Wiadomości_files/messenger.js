@@ -32,19 +32,7 @@ $("#lf").click(function()  {
         console.log(data);
     }));
 }
-
-$('#inputmess').on('keypress', function (e) {
-  if(e.which == 13){
-    $(".sendbtn").click();
-  }
-
-});
 };
-
-
-
-
-
 
 window.addEventListener('scroll', () => {
   if($(window).scrollTop() == 0){

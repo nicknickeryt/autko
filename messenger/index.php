@@ -75,9 +75,9 @@
 
                     $username = "";
                     $email = "";
-                    // Create connection
+
                     $conn = new mysqli($host, $user, $pass, $dbdb);
-                // Check connection
+
                 if ($conn->connect_error) {
                   die("Connection failed: " . $conn->connect_error);
                 }
@@ -93,19 +93,18 @@
 
                   ?>
                 </div>
-
-                              </div>
+              </div>
             </div>
-    </nav>
+          </nav>
 
 
     <div class="input-group">
       <div id="myDropdown">
         <div class="d-flex justify-content-between">
-        <input type="search" id="myInput" autocomplete="off" class="form-control" placeholder="Szukaj" onkeyup="filterFunction()"/>
+        <input type="search" id="myInput" autocomplete="off" class="form-control hvr-ripple-in" placeholder="Szukaj osób..." onkeyup="filterFunction()"/>
 
 <div class="container align-self-center">
-<div class="card receiver d-flex flex-row justify-content-center align-items-center">
+<div class="card receiver hvr-ripple-in d-flex flex-row justify-content-center align-items-center">
 
 <?php
 if(isset($_GET["userid"])){
@@ -176,7 +175,7 @@ if($row["senderid"] == $userid){
 
 <footer class="mt-auto send-form">
 <div class="container input-group mb-3">
- <input type="text" class="send form-control" placeholder="Wpisz wiadomość..." aria-label="Recipient's username" aria-describedby="button-addon2">
+ <input type="text" class="send form-control" id="inputmess" placeholder="Wpisz wiadomość..." aria-label="Recipient's username" aria-describedby="button-addon2">
  <button class="sendbtn btn btn-outline-secondary" onclick="sendMess();" type="button" id="button-addon2"><i class="fa-solid fa-paper-plane"></i></button>
 </div>
 </footer>

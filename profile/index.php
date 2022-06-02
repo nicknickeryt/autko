@@ -90,8 +90,7 @@
 
                     ?>
                   </div>
-
-                                  </div>
+                  </div>
               </div>
       </nav>
       <div class="text-center bg-image hider">

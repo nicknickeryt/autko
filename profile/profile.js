@@ -1,49 +1,50 @@
 window.onload = function() {
-  $(".icon").click(function()  {
+  $(".icon").click(function() {
     $("#exampleModal").modal("toggle");
   });
-  $(".descchange").click(function()  {
+  $(".descchange").click(function() {
     $("#descModal").modal("toggle");
   });
-  $("#submitd").click(function () {
+  $("#submitd").click(function() {
     window.location.href = "upload.php?desc=" + $('.desc-inp').val();
   });
-$("#lf").click(function()  {
-  uploadFile();
-});
+  $("#lf").click(function() {
+    uploadFile();
+  });
+
   function uploadFile() {
-  let files = document.getElementById("loadFile").files;
+    let files = document.getElementById("loadFile").files;
 
-  let formData = new FormData();
-  for (let i = 0; i < files.length; i++) {
-    let file = files[i];
+    let formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      let file = files[i];
 
-    formData.append('files[]', file);
-}
+      formData.append('files[]', file);
+    }
 
-  var reason = "Sukces!";
-  console.log(fetch("upload.php", {
-        method: 'POST',
-        body: formData
+    var reason = "Sukces!";
+    console.log(fetch("upload.php", {
+      method: 'POST',
+      body: formData
     }).then(response => {
-        if(response.status == 413){
-          reason = "Błąd: plik zbyt duży.";
-        }
-        if(response.status == 415){
-          reason = "Błąd: nieprawidłowy format.";
-        }
+      if (response.status == 413) {
+        reason = "Błąd: plik zbyt duży.";
+      }
+      if (response.status == 415) {
+        reason = "Błąd: nieprawidłowy format.";
+      }
       console.log(formData);
       console.log(response);
       alert(reason);
       window.location.reload();
     }).then(data => {
-        console.log(data);
+      console.log(data);
     }));
-}
+  }
 };
 
 window.addEventListener('scroll', () => {
-  if($(window).scrollTop() == 0){
+  if ($(window).scrollTop() == 0) {
     $(".navbar").removeClass("white");
     $(".nav-link").addClass("whitetext");
     $(".nav-link").addClass("hvr-ripple-in");
