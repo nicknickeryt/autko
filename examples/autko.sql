@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 31 Maj 2022, 19:51
+-- Czas generowania: 03 Cze 2022, 16:35
 -- Wersja serwera: 10.8.3-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -41,7 +41,32 @@ CREATE TABLE `credentials` (
 
 INSERT INTO `credentials` (`username`, `mail`, `pass`, `news`, `ID`) VALUES
 ('adadsada', 'a@d', 'a', 0, 1),
-('dbashdbasd', 'a@dd', '1', 0, 2);
+('dbashdbasd', 'a@dd', '1', 0, 2),
+('aaaaa', 'nick@asd', 'a', 0, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `forms`
+--
+
+CREATE TABLE `forms` (
+  `ID` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Zrzut danych tabeli `forms`
+--
+
+INSERT INTO `forms` (`ID`, `name`, `mail`, `title`, `text`) VALUES
+(1, 'fesesf', 'fessef', 'sefsef', 'fsefe'),
+(2, 'nff', 'fsfse', 'esfsef', 'sefesf'),
+(3, 'ssefes', 'sefsef', 'sfsef', 'sefesf'),
+(4, 'tset', 'tset', 'dfaaa', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 -- --------------------------------------------------------
 
@@ -66,7 +91,11 @@ CREATE TABLE `koszyk` (
 
 INSERT INTO `koszyk` (`ID`, `userid`, `data`, `auto`, `nadwozie`, `silnik`, `wersja`, `cena`) VALUES
 (9, 1, 1654011414, 'Daewoo Nexia', 'hatchback', '1.5 DOHC 85 KM', 'GLX', '72250zł'),
-(10, 1, 1654011422, 'Daewoo Nexia', 'sedan', '1.5 SOHC 75 KM', 'GLE', '71000zł');
+(10, 1, 1654011422, 'Daewoo Nexia', 'sedan', '1.5 SOHC 75 KM', 'GLE', '71000zł'),
+(11, 1, 1654023285, 'Chevrolet Aveo', 'sedan', 'L4 1.6l E-TEC', 'LS ', '102000zł'),
+(15, 1, 1654026299, 'Daewoo-FSO Polonez', 'Atu Plus', '1.6 GLi', '', '43000zł'),
+(16, 1, 1654027465, 'Daewoo-FSO Polonez', 'Kombi Plus', '1.6 GSi', '', '47700zł'),
+(17, 1, 1654095127, 'Daewoo Nexia', 'hatchback', '1.6 108 KM', 'GLX', '74250zł');
 
 -- --------------------------------------------------------
 
@@ -91,7 +120,20 @@ INSERT INTO `messenger` (`ID`, `senderid`, `receiverid`, `content`, `date`) VALU
 (2, 1, 2, 'aaaaaaaaaaa', 1654007770),
 (3, 2, 1, 'efesfes', 1654007802),
 (4, 2, 1, 'eafaefeaf', 1654007804),
-(5, 2, 1, 'efesfeafa', 1654007805);
+(5, 2, 1, 'efesfeafa', 1654007805),
+(6, 2, 1, 'eafewaf', 1654095220),
+(7, 1, 2, 'fesfsf', 1654095223),
+(8, 2, 1, 'fefsf', 1654095228),
+(9, 2, 1, 'assd', 1654095234),
+(10, 2, 1, 'dawd', 1654095235),
+(11, 2, 1, 'awdwad', 1654095237),
+(12, 2, 1, 'adwad', 1654095238),
+(13, 1, 2, 'dawdwad', 1654095240),
+(14, 1, 2, 'adwad', 1654095242),
+(15, 1, 2, 'dawdw', 1654095246),
+(16, 1, 2, 'fesafesf', 1654095269),
+(17, 2, 1, 'efsefesf', 1654095272),
+(18, 2, 1, 'fefesfe', 1654095279);
 
 -- --------------------------------------------------------
 
@@ -109,8 +151,9 @@ CREATE TABLE `profiles` (
 --
 
 INSERT INTO `profiles` (`ID`, `opis`) VALUES
-(1, 'hej hej lubie autka 123'),
-(2, ' ');
+(1, 'hej hej 123'),
+(2, ' '),
+(3, ' ');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -120,6 +163,12 @@ INSERT INTO `profiles` (`ID`, `opis`) VALUES
 -- Indeksy dla tabeli `credentials`
 --
 ALTER TABLE `credentials`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeksy dla tabeli `forms`
+--
+ALTER TABLE `forms`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -142,19 +191,25 @@ ALTER TABLE `messenger`
 -- AUTO_INCREMENT dla tabeli `credentials`
 --
 ALTER TABLE `credentials`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT dla tabeli `forms`
+--
+ALTER TABLE `forms`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `koszyk`
 --
 ALTER TABLE `koszyk`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT dla tabeli `messenger`
 --
 ALTER TABLE `messenger`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

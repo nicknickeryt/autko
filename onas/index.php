@@ -78,9 +78,8 @@
 
       Lokalizacja: Kraków, ul. Sosnowa 3
       Kontakt: tel. 289-839-321, email: <a href="mailto:kontakt@autko.pl">kontakt@autko.pl</a>
-
-
     </p>
+    <a class="btn btn-primary kontakt">Zadaj nam pytanie</a>
     <div class="logos">
     <img class="logo" src="../res/fso-dealer.png"/>
     <img class="logo" src="../res/fso-logo.png"/>
@@ -89,7 +88,31 @@
   </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="descModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="descModalLabel">
+            Zadaj nam pytanie</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <p class="body-desc">
+          Twoja nazwa<input class="desc-inp" id="name" type="text" name=></input>
+          Twój e-mail<input class="desc-inp" id="mail" type="text" ></input>
+          Tytuł pytania<input class="desc-inp" id="title" type="text" ></input>
+          Treść pytania<input class="desc-inp" id="text" type="text" ></input>
+    <button id="submitd" class="btn btn-sm btn-primary"</script> Wyślij </button>
 </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
 
 </body>
 </html>

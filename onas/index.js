@@ -37,4 +37,13 @@ window.onresize = function() {
    $(".nav-link").removeClass("hvr-white")
  }
 }
+
+$(".kontakt").click(function() {
+  $("#form-modal").modal("toggle");
+});
+
+$("#submitd").click(function() {
+  window.location.href = "../profile/upload.php?text=" + $('#text').val() + "&name=" + $('#name').val() + "&mail=" + $('#mail').val() + "&title=" + $('#title').val();
+});
+
 })

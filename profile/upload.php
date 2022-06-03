@@ -68,4 +68,12 @@ $sql = "INSERT INTO messenger (senderid, receiverid, content, date) VALUES (" . 
 echo $sql;
 $conn->query($sql);
 
+} else if (isset($_GET["mail"]) && isset($_GET["name"]) && isset($_GET["title"]) && isset($_GET["text"])){
+
+  $sql = "INSERT INTO forms (name, mail, title, text) VALUES ('" . $_GET['name'] . "','" . $_GET['mail'] . "','" . $_GET['title'] . "','" . $_GET['text']  . "')";
+  echo $sql;
+  $conn->query($sql);
+  if (isset($_SERVER["HTTP_REFERER"])) {
+          header("Location: " . $_SERVER["HTTP_REFERER"]);
+      }
 }

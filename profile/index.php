@@ -161,7 +161,7 @@
 </div>
 </div>
 </div>
-
+</div>
 <script>
 $.ajax({
   url: "../res/profpic/<?php

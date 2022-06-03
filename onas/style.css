@@ -239,6 +239,10 @@ h1.headertext {
   width: auto;
 }
 
+.kontakt {
+  margin: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .page {
     height: 150vh !important;
@@ -257,4 +261,13 @@ h1.headertext {
   .blur {
     padding-top: 170px;
   }
+}
+
+.body-desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.desc-inp {
+  margin: 20px;
 }
